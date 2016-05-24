@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>MR. ROBOT</title>
+        <style>* {padding: 0; margin: 0}</style>
+        <script src="js/pixi.js"></script>
+        <script src="js/functions/scaleToWindow.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+
+            // Aliases
+            var Container = PIXI.Container,
+                autoDetectRenderer = PIXI.autoDetectRenderer,
+                loader = PIXI.loader,
+                resources = PIXI.loader.resources,
+                Sprite = PIXI.Sprite,
+                TextureCache = PIXI.TextureCache,
+                Texture = PIXI.Texture,
+                Rectangle = PIXI.Rectangle;
+
+            // Crear stage y renderer
+            var stage = new Container(),
+                renderer = autoDetectRenderer(800,600);
+                //renderer = autoDetectRenderer(1280,720,{ antialias: false, transparent: false, resolution: 1 });
+
+            // Agregar lienzo al DOM
+            document.body.appendChild(renderer.view);
+            renderer.backgroundColor = 0x000000;
+
+            // Remove GPU Artifacts
+            //PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
+
+            // Escalar tamaño del lienzo dentro de la pantalla
+            scaleToWindow(renderer.view, "#000");
+
+            // Conseguir el factor de scala para mapear posiciones
+            var scale = scaleToWindow(renderer.view);
+            console.log("Scale: "+scale);
+
+            // Loader
+            PIXI.loader
+                .add([
+                    "img/baddie.png",
+                    "img/diamond.png",
+                    "img/dude.png",
+                    "img/firstaid.png",
+                    "img/fsociety.png"
+                ])
+                .on("progress", loadProgressHandler)
+                .load(setup);
+
+            function loadProgressHandler(loader, resource){
+
+                //Imprimir que URL está cargando
+                console.log('loading: '+resource.url);
+
+                //Imprimir porcentage de carga
+                console.log('progress: '+loader.progress+'%');
+
+            }
+
+            // States
+            var state = play;
+
+            // Sprites
+            var logo;
+
+            function setup(){
+
+                console.log("setup");
+
+                //Crear estrella
+                logo = new Sprite( resources["img/fsociety.png"].texture );
+                
+                //Posicion inicial
+                logo.position.set(200,150);
+                logo.width = 140;
+                logo.height = 140;
+                logo.anchor.set(0.5);
+                logo.rotation = 0;
+
+                //Agregar al stage
+                stage.addChild(logo);
+
+                // logot the game loop
+                gameLoop();
+            }
+
+            function gameLoop(){
+
+                // Loop this function 60 fps
+                requestAnimationFrame(gameLoop);
+
+                // Update current state
+                state();
+
+                // Render the stage
+                renderer.render(stage);
+            }
+
+            function play(){
+
+                //Update the sprite's velocity
+                logo.vx = 1;
+                logo.vy = 2;
+
+                //Apply the velocity values to the sprite's position to make it move
+                logo.x += logo.vx;
+                logo.y += logo.vy;
+
+                if( logo.x > renderer.width ){
+                    logo.x = 0;
+                }
+                if( logo.y > renderer.height ){
+                    logo.y = 0;
+                }
+            }
+
+
+        </script>
+    </body>
+</html>
