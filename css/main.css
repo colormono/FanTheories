@@ -1,3 +1,5 @@
+/* Amarillo: #ffdd00 */
+
 * {
     padding: 0;
     margin: 0;
@@ -11,25 +13,51 @@ html {
 
 body {
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    background-color: #111111;
+    overflow: hidden;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: courier;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
 }
 
 #header{
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+}
+
+#logo-mrrobot{
     position: absolute;
     top: 0px;
     left: 0px;
-    color: white;
 }
-#main{
+
+#logo-space{
     position: absolute;
     top: 0px;
     right: 0px;
-    color: white;
+    max-width: 140px;
 }
+
+#main{
+    display: none;
+}
+
 #footer{
-    position: absolute;
-    bottom: 20px;
+    position: fixed;
+    bottom: 30px;
     left: 0px;
-    color: white;
+    right: 0px;
+    text-align: center;
+}
+
+#gui{
+    position: fixed;
+    bottom: 20px;
+    right: 0px;
 }

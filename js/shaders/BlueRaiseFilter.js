@@ -18,7 +18,7 @@ function BlueRaiseFilter() {
         '   vec3 max = vec3(1.0,1.0,0.8);',
         '   col.r = (1.0/(1.0+pow(e,(-k.r*((col.r*2.0)-1.0)*20.0)))*(max.r-min.r)+min.r);',
         '   col.g = (1.0/(1.0+pow(e,(-k.g*((col.g*2.0)-1.0)*20.0)))*(max.g-min.g)+min.g);',
-        '   col.b = 0.1;',
+        '   col.b = 0.0;',
         '   gl_FragColor.rgba = col.rgba;',
         '}'
     ].join('\n');

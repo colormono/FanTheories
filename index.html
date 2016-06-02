@@ -1,5 +1,13 @@
 <!doctype html>
 <html class="no-js" lang="es">
+<!--
+   _________             .__       .__    _________                     __    
+ /   _____/ ____   ____ |__|____  |  |  /   _____/ ____ _____    ____ |  | __
+ \_____  \ /  _ \_/ ___\|  \__  \ |  |  \_____  \ /    \\__  \ _/ ___\|  |/ /
+ /        (  <_> )  \___|  |/ __ \|  |__/        \   |  \/ __ \\  \___|    < 
+/_______  /\____/ \___  >__(____  /____/_______  /___|  (____  /\___  >__|_ \
+        \/            \/        \/             \/     \/     \/     \/     \/
+-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -11,14 +19,15 @@
 </head>
 <body>
     
-    <div id="Stats-output"></div>
+    <div id="stats"></div>
+    <div id="gui"></div>
     <!--canvas id="canvas"></canvas-->
 
     <div class="page">
         
         <header id="header">
-            <div id="logo-mrrobot">Mr.Robot</div>
-            <div id="logo-space">Space</div>
+            <div id="logo-mrrobot"><img src="img/logo-mrrobot.png" alt="Mr.Robot"></div>
+            <div id="logo-space"><img src="img/logo-space.png" alt="Space"></div>
         </header>
 
         <main id="main">
@@ -27,7 +36,7 @@
         </main>
 
         <footer id="footer">
-            <p>asd</p>
+            <p>Hacked by SocialSnack</p>
         </footer>
 
     </div>
@@ -37,11 +46,8 @@
     <script src="js/vendor/dat.gui.js"></script>
     <script src="js/vendor/stats.js"></script>
     <script src="js/shaders/BlueRaiseFilter.js"></script>
-    <script src="js/shaders/ConvergenceFilter.js"></script>
     <script src="js/shaders/CutSliderFilter.js"></script>
-    <script src="js/shaders/HighContrastFilter.js"></script>
     <script src="js/shaders/NoiseFilter.js"></script>
-    <script src="js/shaders/SlitScanFilter.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
