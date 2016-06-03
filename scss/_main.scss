@@ -1,6 +1,6 @@
 /* PALETA */
 
-$amarillo: #FEE400;
+$rojo: #BB0000;
 $blanco: #FFFFFF;
 $negro: #000000;
 $gris: #434343;
@@ -81,7 +81,7 @@ img{
     height: auto;
 }
 
-.page{
+#page{
     position: absolute;
     top: 0px;
     right: 0px;
@@ -180,7 +180,7 @@ img{
     left: 50%;
     right: 50%;
     bottom: 0;
-    background: $amarillo;
+    background: $rojo;
     height: 4px;
     -webkit-transition-property: left, right;
     transition-property: left, right;
@@ -218,7 +218,7 @@ img{
     left: 0;
     right: 0;
     bottom: 0;
-    background: $amarillo;
+    background: $rojo;
     -webkit-transform: scaleY(0);
     transform: scaleY(0);
     -webkit-transform-origin: 50% 100%;

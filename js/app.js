@@ -11,12 +11,14 @@
         Container = PIXI.Container;
 
     // Globals
+    var app = document.getElementById('app');
+    var page = document.getElementById('page');
     var stats = initStats();
     var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    //var canvas = document.getElementById('canvas');
     var renderer = autoDetectRenderer(width, height);
-    document.body.appendChild(renderer.view);    
+    app.appendChild(renderer.view);    
+
     window.randomMode = true;
     window.addEventListener('orientationchange', resize, false);
     window.addEventListener('resize', resize, false);
@@ -56,6 +58,9 @@
         }
     ];
 
+    // Hide page on start
+    page.style.visibility = "hidden";
+
     // Preloader
     PIXI.loader
         .add([
@@ -81,15 +86,13 @@
     // Setup
     function setup(){
 
+        page.style.visibility = "visible";
+
         // Fondo
         bg = new Sprite( resources["img/bg.jpg"].texture );
-        bg.width = width;
-        bg.height = height;
-        bg.position.set(width/2, height/2);
-        bg.anchor.set(0.5);
         grupoFondo.addChild(bg);
 
-        // Script
+        // DDOS Script
         loginScript = new PIXI.Text( 'ddos.bat', { font: '10px monospace', fill: '#ffffff', align: 'left' }
         );
         loginScript.position.set(30, 120);
@@ -97,32 +100,27 @@
 
         // Elliot
         loginElliot = new Sprite( resources["img/login/elliot.png"].texture );
-        loginElliot.position.set(width/2, height/2);
-        loginElliot.anchor.set(0.5);
         grupoFondo.addChild(loginElliot);
 
         // Rayitas
         var rayitas = new Container();
         for (var i=0; i<16; i++) {
             var rayita = new Graphics();
-            rayita.beginFill(0xFEE400, 1);
+            rayita.beginFill(0xBB0000, 1);
             rayita.drawRect(Math.random()*width, 85+Math.random()*height*0.85, Math.random()*200, Math.random()*50);
             rayitas.addChild(rayita);
         }
         grupoFondo.addChild(rayitas);
 
         // Box
-        box = new Sprite( resources["img/login/box.png"].texture );
-        box.position.set(Math.random().width, Math.random()*height);
+        box = new Sprite( resources["img/login/box.png"].texture );       
         box.anchor.set(0.5);
         grupoFondo.addChild(box);
 
         // Fun Theory
         loginFunTheroy = new Sprite( resources["img/login/fantheory.png"].texture );
-        loginFunTheroy.position.set(loginElliot.x,loginElliot.y-loginElliot.height*0.13);
         loginFunTheroy.anchor.set(0.5);
         grupoFondo.addChild(loginFunTheroy);
-
 
         // fsociety
         fsociety = new Sprite( resources["img/fsociety.png"].texture );
@@ -135,13 +133,34 @@
         fsociety.on('touchstart', onDown);
         stage.addChild(fsociety);
 
-
         // Añadir grupo fondo al stage
         stage.addChild(grupoFondo);
 
+        TweenLite.set(loginFunTheroy, { pixi: {
+            alpha: 0.85,
+            anchor: 0.5,
+            scale: 0.7
+        }});
+
+        //TweenLite.to(loginFunTheroy, 1, {pixi: { x: 200, scale: 2}});
+
+
+        // Posiciones para el fondo
+        updateGrupoFondo();
 
         // Loop
         loop();
+    }
+
+    // Update grupoFondo
+    function updateGrupoFondo(){
+        bg.width = width;
+        bg.height = height;
+
+        loginElliot.position.set(width/2, height/2);
+        loginElliot.anchor.set(0.5);
+
+        loginFunTheroy.position.x = loginElliot.x;
     }
 
     // Loop
@@ -333,10 +352,7 @@
     function resize() {
         width = window.innerWidth;
         height = window.innerHeight;
-
-        bg.width = width;
-        bg.height = height;
-
+        updateGrupoFondo();
         renderer.resize(width, height);
     }
 

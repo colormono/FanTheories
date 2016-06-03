@@ -19,19 +19,17 @@
 </head>
 <body>
     
-    <div id="stats"></div>
-    <div id="gui"></div>
-    <!--canvas id="canvas"></canvas-->
-
-    <div class="page">
+    <div id="page">
         
         <header id="header">
-            <div id="logo-mrrobot"><img src="img/logo-mrrobot.png" alt="Mr.Robot"></div>
-            <div id="logo-space"><img src="img/logo-space.png" alt="Space"></div>
+            <div id="logo-mrrobot"><img src="img/logo-mrrobot-rojo.png" alt="Mr.Robot"></div>
+            <div id="logo-space"><img src="img/logo-space-blanco.png" alt="Space"></div>
         </header>
 
         <main id="main">
             
+            <section id="app"></section>
+
             <section id="sectionLogin">
                 <a href="#" class="hvr-underline-from-center"><span>Un3tE</span></a>
             </section>
@@ -44,10 +42,17 @@
 
     </div>
 
+    <div id="stats"></div>
+    <div id="gui"></div>
+
     <!-- Scripts -->
-    <script src="js/vendor/pixi.js"></script>
-    <script src="js/vendor/dat.gui.js"></script>
+    <script src="js/vendor/pixi.min.js"></script>
+    <script src="js/vendor/dat.gui.min.js"></script>
     <script src="js/vendor/stats.js"></script>
+    <script src="js/vendor/gsap/plugins/CSSPlugin.min.js"></script>
+    <script src="js/vendor/gsap/easing/EasePack.min.js"></script>
+    <script src="js/vendor/gsap/TweenLite.min.js"></script>
+    <script src="js/functions/PixiPlugin.js"></script>
     <script src="js/shaders/BlueRaiseFilter.js"></script>
     <script src="js/shaders/CutSliderFilter.js"></script>
     <script src="js/shaders/NoiseFilter.js"></script>

@@ -77,6 +77,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/logo-mrrobot-rojo.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4254,
+		"inputAbbreviatedPath": "\/img\/logo-mrrobot-rojo.png",
+		"outputAbbreviatedPath": "\/img\/logo-mrrobot-rojo.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/logo-mrrobot.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -84,6 +95,17 @@
 		"initialSize": 4322,
 		"inputAbbreviatedPath": "\/img\/logo-mrrobot.png",
 		"outputAbbreviatedPath": "\/img\/logo-mrrobot.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/logo-space-blanco.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4930,
+		"inputAbbreviatedPath": "\/img\/logo-space-blanco.png",
+		"outputAbbreviatedPath": "\/img\/logo-space-blanco.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -118,6 +140,17 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
+		},
+	"\/js\/functions\/PixiPlugin.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/functions\/PixiPlugin.js",
+		"outputAbbreviatedPath": "\/js\/functions\/min\/PixiPlugin-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/js\/functions\/scaleToWindow.js": {
 		"fileType": 64,
@@ -350,12 +383,221 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/vendor\/pixi.dev.js": {
+	"\/js\/vendor\/gsap\/easing\/EasePack.min.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/vendor\/pixi.dev.js",
-		"outputAbbreviatedPath": "\/js\/vendor\/min\/pixi.dev-min.js",
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/easing\/EasePack.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/easing\/min\/EasePack.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/jquery.gsap.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/jquery.gsap.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/min\/jquery.gsap.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/AttrPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/AttrPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/AttrPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/BezierPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/BezierPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/BezierPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/ColorPropsPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/ColorPropsPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/ColorPropsPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/CSSPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/CSSPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/CSSPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/CSSRulePlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/CSSRulePlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/CSSRulePlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/DirectionalRotationPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/DirectionalRotationPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/DirectionalRotationPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/EaselPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/EaselPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/EaselPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/EndArrayPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/EndArrayPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/EndArrayPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/KineticPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/KineticPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/KineticPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/RaphaelPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/RaphaelPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/RaphaelPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/RoundPropsPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/RoundPropsPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/RoundPropsPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/ScrollToPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/ScrollToPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/ScrollToPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/plugins\/TextPlugin.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/TextPlugin.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/plugins\/min\/TextPlugin.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/TimelineLite.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/TimelineLite.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/min\/TimelineLite.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/TimelineMax.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/TimelineMax.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/min\/TimelineMax.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/TweenLite.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/TweenLite.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/min\/TweenLite.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/TweenMax.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/TweenMax.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/min\/TweenMax.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/gsap\/utils\/Draggable.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/gsap\/utils\/Draggable.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/gsap\/utils\/min\/Draggable.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,

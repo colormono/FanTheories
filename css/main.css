@@ -68,7 +68,7 @@ img {
   max-width: 100%;
   height: auto; }
 
-.page {
+#page {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -151,7 +151,7 @@ img {
   left: 50%;
   right: 50%;
   bottom: 0;
-  background: #FEE400;
+  background: #BB0000;
   height: 4px;
   -webkit-transition-property: left, right;
   transition-property: left, right;
@@ -188,7 +188,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #FEE400;
+  background: #BB0000;
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50% 100%;
