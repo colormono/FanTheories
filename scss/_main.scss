@@ -1,8 +1,8 @@
 /* PALETA */
 
-$rojo: #BB0000;
+$rojo: #ed0532;
 $blanco: #FFFFFF;
-$negro: #000000;
+$negro: #0e0e0e;
 $gris: #434343;
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -81,15 +81,53 @@ img{
     height: auto;
 }
 
-#page{
+a{
+    color: $blanco;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary{
+    $letter-spacing: 10px;
+    padding: 10px 25px;
+    padding-left: 25px + $letter-spacing/2;
+    letter-spacing: $letter-spacing;
+    background-color: $blanco;
+    color: $negro;
+    box-shadow: 5px 5px 0px rgba($gris, 0.5);
+    opacity: 0.9;
+}
+
+.btn-secondary{
+    padding: 5px 15px;
+    background-color: $negro;
+    color: $blanco;
+    border: 1px solid $rojo;
+}
+
+.btn-black{
+    display: inline-block;
+    background-color: $negro;
+    color: $blanco;
+    padding: 10px;
+    border: 1px solid $rojo;
+    box-shadow: 4px 4px 0px -1px $rojo;
+
+    &:hover{
+        color: $rojo;
+    }
+}
+
+/* PRELOADER */
+#preload{
     position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -100px;
+    z-index: 10;
+    text-align: center;
+    width: 200px;
 }
 
 /* HEADER */
@@ -99,12 +137,22 @@ img{
     top: 30px;
     left: 30px;
     right: 30px;
+    z-index: 15;
 }
 
 #logo-mrrobot{
     position: absolute;
     top: 0px;
     left: 0px;
+
+    img, span{
+        float: left;
+    }
+
+    span{
+        display: block;
+        margin: 2px 15px;
+    }
 }
 
 #logo-space{
@@ -116,7 +164,13 @@ img{
 
 /* MAIN */
 
+#app{
+    z-index: 5;
+}
+
 #main{
+    position: relative;
+    z-index: 10;
     display: table-cell;
     height: 100vh;
     width: 100vw;
@@ -124,20 +178,106 @@ img{
     text-align: center;
 }
 
+/* SECTIONS */
+
+.section{
+    padding: 60px;
+}
+
 #sectionLogin{
     margin-top: 270px;
+}
 
-    a{
-        $letter-spacing: 10px;
+.article{
+    position: relative;
+    text-align: left;
+    max-width: 480px;
 
-        padding: 10px 25px;
-        padding-left: 25px + $letter-spacing/2;
-        background-color: $blanco;
-        color: $negro;
-        letter-spacing: $letter-spacing;
-        text-decoration: none;
-        opacity: 0.9;
-        box-shadow: 5px 5px 0px rgba($gris, 0.5);
+    &:before,
+    .container{
+        border: 1px solid $rojo;
+    }
+
+    &:before{
+        content: '';
+        position: absolute;
+        z-index: 11;
+        top: 7px;
+        left: 7px;
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: rgba($negro,0.7);
+    }
+
+    .container{
+        position: relative;
+        z-index: 12;
+        background: $negro;
+    }
+
+    p{
+        padding-bottom: 15px;
+        line-height: 15px;
+    }
+
+    .title{
+        position: relative;
+        letter-spacing: 5px;
+
+        img {
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+            transition: all 1s ease-in-out;
+        }
+        h3{
+            position: absolute;
+            top: -35px;
+            left: 10px;
+            z-index: 12;
+        }
+        small{
+            display: block;
+            padding: 5px 10px;
+            font-size: 11px;
+        }
+        strong{
+            display: block;
+            color: $negro;
+            background-color: $rojo;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        h1{
+            position: absolute;
+            bottom: 15px;
+            left: 10px;
+            font-weight: bold; 
+            font-size: 18px;
+            display: inline-block;
+            background-color: $negro;
+            color: $blanco;
+            padding: 10px;
+            border: 1px solid $rojo;
+            box-shadow: 4px 4px 0px -1px $rojo;
+        }
+
+        &:hover{
+            img {
+                -webkit-filter: grayscale(0);
+                filter: grayscale(0);
+            }
+        }
+    }
+
+    .body{
+        padding: 15px 20px;
+    }
+
+    .more{
+        text-align: right;
+        padding: 0px 15px 25px;
     }
 }
 
@@ -146,12 +286,16 @@ img{
 #footer{
     position: fixed;
     bottom: 30px;
-    left: 0px;
-    right: 0px;
-    text-align: center;
+    left: 30px;
+    z-index: 15;
 }
 
 /* DEBUG */
+.no-debug{
+    #debug{
+        display: none;
+    }
+}
 
 #gui{
     z-index: 100;

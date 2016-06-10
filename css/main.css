@@ -68,27 +68,65 @@ img {
   max-width: 100%;
   height: auto; }
 
-#page {
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+
+.btn-primary {
+  padding: 10px 25px;
+  padding-left: 30px;
+  letter-spacing: 10px;
+  background-color: #FFFFFF;
+  color: #0e0e0e;
+  box-shadow: 5px 5px 0px rgba(67, 67, 67, 0.5);
+  opacity: 0.9; }
+
+.btn-secondary {
+  padding: 5px 15px;
+  background-color: #0e0e0e;
+  color: #FFFFFF;
+  border: 1px solid #ed0532; }
+
+.btn-black {
+  display: inline-block;
+  background-color: #0e0e0e;
+  color: #FFFFFF;
+  padding: 10px;
+  border: 1px solid #ed0532;
+  box-shadow: 4px 4px 0px -1px #ed0532; }
+  .btn-black:hover {
+    color: #ed0532; }
+
+/* PRELOADER */
+#preload {
   position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  overflow: hidden; }
+  top: 50%;
+  left: 50%;
+  margin-top: -10px;
+  margin-left: -100px;
+  z-index: 10;
+  text-align: center;
+  width: 200px; }
 
 /* HEADER */
 #header {
   position: fixed;
   top: 30px;
   left: 30px;
-  right: 30px; }
+  right: 30px;
+  z-index: 15; }
 
 #logo-mrrobot {
   position: absolute;
   top: 0px;
   left: 0px; }
+  #logo-mrrobot img, #logo-mrrobot span {
+    float: left; }
+  #logo-mrrobot span {
+    display: block;
+    margin: 2px 15px; }
 
 #logo-space {
   position: absolute;
@@ -97,34 +135,105 @@ img {
   max-width: 140px; }
 
 /* MAIN */
+#app {
+  z-index: 5; }
+
 #main {
+  position: relative;
+  z-index: 10;
   display: table-cell;
   height: 100vh;
   width: 100vw;
   vertical-align: middle;
   text-align: center; }
 
+/* SECTIONS */
+.section {
+  padding: 60px; }
+
 #sectionLogin {
   margin-top: 270px; }
-  #sectionLogin a {
-    padding: 10px 25px;
-    padding-left: 30px;
-    background-color: #FFFFFF;
-    color: #000000;
-    letter-spacing: 10px;
-    text-decoration: none;
-    opacity: 0.9;
-    box-shadow: 5px 5px 0px rgba(67, 67, 67, 0.5); }
+
+.article {
+  position: relative;
+  text-align: left;
+  max-width: 480px; }
+  .article:before,
+  .article .container {
+    border: 1px solid #ed0532; }
+  .article:before {
+    content: '';
+    position: absolute;
+    z-index: 11;
+    top: 7px;
+    left: 7px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: rgba(14, 14, 14, 0.7); }
+  .article .container {
+    position: relative;
+    z-index: 12;
+    background: #0e0e0e; }
+  .article p {
+    padding-bottom: 15px;
+    line-height: 15px; }
+  .article .title {
+    position: relative;
+    letter-spacing: 5px; }
+    .article .title img {
+      -webkit-filter: grayscale(1);
+      filter: grayscale(1);
+      -webkit-transition: all 1s ease-in-out;
+      transition: all 1s ease-in-out; }
+    .article .title h3 {
+      position: absolute;
+      top: -35px;
+      left: 10px;
+      z-index: 12; }
+    .article .title small {
+      display: block;
+      padding: 5px 10px;
+      font-size: 11px; }
+    .article .title strong {
+      display: block;
+      color: #0e0e0e;
+      background-color: #ed0532;
+      padding: 5px 10px;
+      font-weight: bold;
+      font-size: 18px; }
+    .article .title h1 {
+      position: absolute;
+      bottom: 15px;
+      left: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      display: inline-block;
+      background-color: #0e0e0e;
+      color: #FFFFFF;
+      padding: 10px;
+      border: 1px solid #ed0532;
+      box-shadow: 4px 4px 0px -1px #ed0532; }
+    .article .title:hover img {
+      -webkit-filter: grayscale(0);
+      filter: grayscale(0); }
+  .article .body {
+    padding: 15px 20px; }
+  .article .more {
+    text-align: right;
+    padding: 0px 15px 25px; }
 
 /* FOOTER */
 #footer {
   position: fixed;
   bottom: 30px;
-  left: 0px;
-  right: 0px;
-  text-align: center; }
+  left: 30px;
+  z-index: 15; }
 
 /* DEBUG */
+.no-debug #debug {
+  display: none; }
+
 #gui {
   z-index: 100;
   position: fixed;
@@ -151,7 +260,7 @@ img {
   left: 50%;
   right: 50%;
   bottom: 0;
-  background: #BB0000;
+  background: #ed0532;
   height: 4px;
   -webkit-transition-property: left, right;
   transition-property: left, right;
@@ -188,7 +297,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #BB0000;
+  background: #ed0532;
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50% 100%;
