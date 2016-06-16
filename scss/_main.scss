@@ -1,3 +1,5 @@
+@import "fonts";
+
 /* PALETA */
 
 $rojo: #ed0532;
@@ -61,19 +63,17 @@ table {
     margin: 0;
 }
 
-body,
-html {
-    height: 100vh;
-    width: 100vw;
-}
-
 body {
-    -webkit-font-smoothing: antialiased;
-    overflow: hidden;
     background-color: #000000;
     color: #FFFFFF;
-    font-family: monospace, courier;
+    font-family: "Monaco", monospace, courier;
     font-size: 13px;
+}
+
+body.app {
+    overflow: hidden;
+    /*Avoid flicker on slides transitions for mobile phones #336 */
+    -webkit-tap-highlight-color: transparent;
 }
 
 img{
@@ -85,6 +85,12 @@ a{
     color: $blanco;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
+}
+
+h4{
+    color: $rojo;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .btn-primary{
@@ -130,84 +136,23 @@ a{
     width: 200px;
 }
 
-/* HEADER */
-
-#header{
-    position: fixed;
-    top: 30px;
-    left: 30px;
-    right: 30px;
-    z-index: 15;
-}
-
-#logo-mrrobot{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-
-    img, span{
-        float: left;
-    }
-
-    span{
-        display: block;
-        margin: 2px 15px;
-    }
-}
-
-#logo-space{
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    max-width: 140px;
-}
-
-/* MAIN */
-
+/* APP */
 #app{
     z-index: 5;
 }
 
-#main{
-    position: relative;
-    z-index: 10;
-    display: table-cell;
-    height: 100vh;
-    width: 100vw;
-    vertical-align: middle;
-    text-align: center;
-}
-
 /* SECTIONS */
-
 .section{
     padding: 60px;
-}
-
-#sectionLogin{
-    margin-top: 270px;
 }
 
 .article{
     position: relative;
     text-align: left;
-    max-width: 480px;
+    line-height: 1.3;
 
-    &:before,
     .container{
         border: 1px solid $rojo;
-    }
-
-    &:before{
-        content: '';
-        position: absolute;
-        z-index: 11;
-        top: 7px;
-        left: 7px;
-        width: 100%;
-        height: 100%;
-        display: block;
-        background: rgba($negro,0.7);
     }
 
     .container{
@@ -218,7 +163,7 @@ a{
 
     p{
         padding-bottom: 15px;
-        line-height: 15px;
+        line-height: 1.5;
     }
 
     .title{
@@ -226,9 +171,8 @@ a{
         letter-spacing: 5px;
 
         img {
-            -webkit-filter: grayscale(1);
             filter: grayscale(1);
-            transition: all 1s ease-in-out;
+            transition: all 0.5s ease-in-out;
         }
         h3{
             position: absolute;
@@ -265,7 +209,6 @@ a{
 
         &:hover{
             img {
-                -webkit-filter: grayscale(0);
                 filter: grayscale(0);
             }
         }
@@ -273,11 +216,34 @@ a{
 
     .body{
         padding: 15px 20px;
+    
+        strong{
+            color: $rojo;
+            background-color: $rojo;
+        }
+
+        em{
+            text-decoration: line-through;
+        }
+
+        span{
+
+        }
     }
 
     .more{
         text-align: right;
         padding: 0px 15px 25px;
+    }
+
+    .share{
+        li{
+            display: inline-block;
+            font-size: 24px;
+        }
+        a:hover{
+            color: $rojo;
+        }
     }
 }
 
@@ -291,6 +257,7 @@ a{
 }
 
 /* DEBUG */
+
 .no-debug{
     #debug{
         display: none;
@@ -304,80 +271,268 @@ a{
     right: 0px;
 }
 
-/* Underline From Center */
-.hvr-underline-from-center {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    overflow: hidden;
-}
-.hvr-underline-from-center:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: 50%;
-    right: 50%;
-    bottom: 0;
-    background: $rojo;
-    height: 4px;
-    -webkit-transition-property: left, right;
-    transition-property: left, right;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-}
-.hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
-    left: 0;
-    right: 0;
+/* MODALS */
+
+.single{
+    max-width: 720px;
+    margin: 0px auto;
 }
 
-/* Sweep To Top */
-.hvr-sweep-to-top {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
+.mfp-bg {
+    background-color: #000;
+}
+.mfp-fade.mfp-bg {
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.mfp-fade.mfp-bg.mfp-ready {
+  opacity: 0.8;
+}
+
+.mfp-fade.mfp-bg.mfp-removing {
+  opacity: 0;
+}
+
+.mfp-fade.mfp-wrap .mfp-content {
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+}
+
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
+}
+
+.mfp-close-btn-in .mfp-close{
+    color: $rojo;
+    font-size: 70px;
+    top: 10px;
+    opacity: 1;
+}
+
+
+/* COMENTARIOS */
+
+.comments-container {
+    margin: 60px auto 15px;
+    width: 768px;
+}
+
+.comments-form {
+    input,
+    textarea{
+        width: 100%;
+        border: none;
+        background: transparent;
+        color: #FFFFFF;
+        font-family: monospace, courier;
+        font-size: 13px;
+        border: none;
+        padding: 4px;
+    }
+    input[type="submit"]{
+        background: $rojo;
+        color: #FFFFFF;
+        border-radius: 4px;
+        width: auto;
+        cursor: default;
+    }
+    a.fsociety-photo{
+        text-align: center;
+        display: block;
+        width: 65px;
+        height: 65px;
+        line-height: 72px;
+        background: $rojo;
+        font-size: 24px;
+    }
+}
+
+.comments-list {
     position: relative;
-    -webkit-transition-property: color;
-    transition-property: color;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
 }
-.hvr-sweep-to-top:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+
+/**
+ * Lineas / Detalles
+ -----------------------*/
+.comments-list:before {
+    content: '';
+    width: 2px;
+    height: 100%;
     background: $rojo;
-    -webkit-transform: scaleY(0);
-    transform: scaleY(0);
-    -webkit-transform-origin: 50% 100%;
-    transform-origin: 50% 100%;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
+    position: absolute;
+    left: 32px;
+    top: 0;
 }
-.hvr-sweep-to-top:hover, .hvr-sweep-to-top:focus, .hvr-sweep-to-top:active {
-    color: white;
+
+.comments-list:after {
+    content: '';
+    position: absolute;
+    background: $negro;
+    bottom: 0;
+    left: 27px;
+    width: 7px;
+    height: 7px;
+    border: 3px solid $rojo;
+    border-radius: 50%;
 }
-.hvr-sweep-to-top:hover:before, .hvr-sweep-to-top:focus:before, .hvr-sweep-to-top:active:before {
-    -webkit-transform: scaleY(1);
-    transform: scaleY(1);
+
+.reply-list:before, .reply-list:after {display: none;}
+.reply-list li:before {
+    content: '';
+    width: 60px;
+    height: 2px;
+    background: $rojo;
+    position: absolute;
+    top: 25px;
+    left: -55px;
+}
+
+
+.comments-list li {
+    margin-bottom: 15px;
+    display: block;
+    position: relative;
+}
+
+.comments-list li:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    width: 0;
+}
+
+.reply-list {
+    padding-left: 88px;
+    clear: both;
+    margin-top: 15px;
+}
+/**
+ * Avatar
+ ---------------------------*/
+.comments-list .comment-avatar {
+    width: 65px;
+    height: 65px;
+    position: relative;
+    z-index: 99;
+    float: left;
+    border: 3px solid $rojo;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.comments-list .comment-avatar img {
+    width: 100%;
+    height: 100%;
+}
+
+.reply-list .comment-avatar {
+    width: 50px;
+    height: 50px;
+}
+
+.comment-main-level:after {
+    content: '';
+    width: 0;
+    height: 0;
+    display: block;
+    clear: both;
+}
+/**
+ * Caja del Comentario
+ ---------------------------*/
+.comments-list .comment-box {
+    width: 680px;
+    float: right;
+    position: relative;
+}
+
+.comments-list .comment-box:before, .comments-list .comment-box:after {
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    display: block;
+    border-width: 10px 12px 10px 0;
+    border-style: solid;
+    border-color: transparent $negro;
+    top: 8px;
+    left: -11px;
+}
+
+.comments-list .comment-box:before {
+    border-width: 11px 13px 11px 0;
+    border-color: transparent rgba(0,0,0,0.05);
+    left: -12px;
+}
+
+.reply-list .comment-box {
+    width: 610px;
+}
+.comment-box .comment-head {
+    background: $negro;
+    padding: 10px 12px;
+    overflow: hidden;
+    border-radius: 4px 4px 0 0;
+}
+
+.comment-box .comment-head i {
+    float: right;
+    margin-left: 14px;
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.comment-box .comment-name {
+    float: left;
+    margin-right: 10px;
+}
+
+.comment-box .comment-head span {
+    float: left;
+    position: relative;
+    top: 1px;
+}
+
+.comment-box .comment-content {
+    background: #000;
+    padding: 12px;
+    color: #595959;
+    border-radius: 0 0 4px 4px;
+}
+
+.comment-box a {color: $rojo;}
+.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: $rojo;}
+.comment-box .comment-name.by-author:after {
+    content: 'autor';
+    background: $rojo;
+    color: #FFF;
+    padding: 3px 5px;
+    font-weight: 700;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
+/** =====================
+ * Responsive
+ ========================*/
+@media only screen and (max-width: 766px) {
+    .comments-container {
+        width: 480px;
+    }
+
+    .comments-list .comment-box {
+        width: 390px;
+    }
+
+    .reply-list .comment-box {
+        width: 320px;
+    }
 }
