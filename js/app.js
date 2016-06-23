@@ -29,18 +29,19 @@
     var rojo = 0xED0532;
     var negro = 0x000000;
 
+    var assetsFolder = "wp-content/themes/mrrobot/";
 
     // Preloader
     PIXI.loader
         .add([
-            "img/logo-mrrobot-rojo.png",
-            "img/logo-space.png",
-            "img/bg.jpg",
-            "img/login/box.png",
-            "img/login/elliot.png",
-            "img/login/fantheory.png",
-            "img/login/unete.png",
-            "img/fsociety.png"
+            assetsFolder+"img/logo-mrrobot-rojo.png",
+            assetsFolder+"img/logo-space.png",
+            assetsFolder+"img/bg.jpg",
+            assetsFolder+"img/login/box.png",
+            assetsFolder+"img/login/elliot.png",
+            assetsFolder+"img/login/fantheory.png",
+            assetsFolder+"img/login/unete.png",
+            assetsFolder+"img/teorias/fsociety.png"
         ])
         .on("progress", loadProgressHandler)
         .load(setup);
@@ -62,8 +63,9 @@
     // Load JSON
     var dbJSON, http_request;
     function loadJSON(){
-        //var data_file = "http://www.tutorialspoint.com/json/data.json";
-        var data_file = "../data.json";
+        //var data_file = "data.json";
+        //var data_file = "http://localhost:8888/websites/wordpress/?json=get_posts&order=ASC";
+        var data_file = "http://socialsnacksandbox.com/mrrobot/wordpress/?json=get_posts&order=ASC";
         http_request = new XMLHttpRequest();
         try{
             // Opera 8.0+, Firefox, Chrome, Safari
@@ -120,13 +122,13 @@
         TweenLite.to(grupoSobre, 2, {pixi: { y: 30, alpha: 1 }, delay: 2});
 
         // Logo MR.Robot
-        logoMrobot = new Sprite( resources["img/logo-mrrobot-rojo.png"].texture );
+        logoMrobot = new Sprite( resources[assetsFolder+"img/logo-mrrobot-rojo.png"].texture );
         logoMrobot.position.x = 30;
-        txtEstreno = new PIXI.Text( '////ESTRENO////\nMIÉRCOLES 13 DE JULIO 22HS.', { font: '13px Monaco', fill: '#FFFFFF', align: 'left' });
+        txtEstreno = new PIXI.Text( '////ESTRENO////\nJUEVES 14 DE JULIO 23HS.', { font: '12px Hack', fill: '#FFFFFF', align: 'left' });
         txtEstreno.position.set(245, 2);
 
         // Logo Space
-        logoSpace = new Sprite( resources["img/logo-space.png"].texture );
+        logoSpace = new Sprite( resources[assetsFolder+"img/logo-space.png"].texture );
         logoSpace.width = 140;
         logoSpace.height = 29.67;
         logoSpace.position.x = width-logoSpace.width-30;
@@ -135,18 +137,18 @@
         grupoFondo = new Container();
         grupoFondo.alpha = 0;
         c.fadeIn(grupoFondo, 600);
-        bg = new Sprite( resources["img/bg.jpg"].texture );
+        bg = new Sprite( resources[assetsFolder+"img/bg.jpg"].texture );
 
         // Rayitas
         rayitas = new Container();
         rayitas2 = new Container();
 
         // Box
-        box = new Sprite( resources["img/login/box.png"].texture );       
+        box = new Sprite( resources[assetsFolder+"img/login/box.png"].texture );       
         box.anchor.set(0.5);
 
         // DDOS Script
-        ddos = new PIXI.Text( 'ddos.bat', { font: '12px Monaco', fill: '#666666', align: 'left' });
+        ddos = new PIXI.Text( 'ddos.bat', { font: '12px Hack', fill: '#666666', align: 'left' });
         ddos.position.set(30, 90);
 
         // Añadir fondo al stage
@@ -241,7 +243,7 @@
         grupoLogin = new Container();
 
         // Elliot
-        loginElliot = new Sprite( resources["img/login/elliot.png"].texture );
+        loginElliot = new Sprite( resources[assetsFolder+"img/login/elliot.png"].texture );
         loginElliot.position.y = 50;
         loginElliot.anchor.set(0.5);
         loginElliot.alpha = 0;
@@ -249,7 +251,7 @@
         c.slide(loginElliot, 0, loginElliot.position.y-50, 90);
 
         // Fun Theory
-        loginFunTheroy = new Sprite( resources["img/login/fantheory.png"].texture );
+        loginFunTheroy = new Sprite( resources[assetsFolder+"img/login/fantheory.png"].texture );
         loginFunTheroy.position.y = -60;
         loginFunTheroy.anchor.set(0.5);
         loginFunTheroy.alpha = 0;
@@ -263,11 +265,15 @@
         grupoGlitch.addChild(grupoLogin);
 
         // Botón login
-        loginBtn = new Sprite( resources["img/login/unete.png"].texture );
+        loginBtn = new Sprite( resources[assetsFolder+"img/login/unete.png"].texture );
         loginBtn.anchor.set(0.5);
-        loginBtn.position.set( Math.floor(width/2), Math.floor(height/2) + 100 );
-        var loginBtnAnim = c.pulse(loginBtn, 60, 0.5);        
-        loginBtnAnim.play();
+        loginBtn.position.set( Math.floor(width/2), Math.floor(height/2) + 200 );
+        TweenLite.set(loginBtn, { pixi: {
+            alpha: 0,
+            y: Math.floor(height/2) + 200
+        }});
+        //var loginBtnAnim = c.pulse(loginBtn, 60, 0.5);        
+        //loginBtnAnim.play();
         t.makeInteractive(loginBtn);
         stage.addChild(loginBtn);
 
@@ -279,7 +285,7 @@
         };
         loginBtn.tap = function(){
             loginBtn.enabled = false;
-            loginBtnAnim.pause();
+            //loginBtnAnim.pause();
             outLogin();
         };
 
@@ -288,6 +294,7 @@
     }
 
     function loopLogin(){
+        TweenLite.to(loginBtn, 2, {pixi: { y: Math.floor(height/2) + 100, alpha: 1 }, delay: 2});
     }
 
     function outLogin(){
@@ -311,9 +318,9 @@
     var teorias = []; // Arreglo vacío para las teorías
 
     var borroso = new PIXI.filters.BlurFilter();
-    var democracyText;
+    var democracyText, fsocietyLogo;
 
-    function createTeoria(id, x, y, title, thumb, url){
+    function createTeoria(id, x, y, w, h, title, thumb, url){
 
         var teoriaSmall = new Container();
 
@@ -321,14 +328,14 @@
         teoriaThumb.interactive = true;
         teoriaThumb.buttonMode = true;
         teoriaThumb.position.set(0, 0);
-        teoriaThumb.width = 480;
-        teoriaThumb.height = 320;
+        teoriaThumb.width = w;
+        teoriaThumb.height = h;
         teoriaThumb.link = url;
         teoriaThumb.on('mouseup', openModal);
         teoriaThumb.on('touchend', openModal);
 
-        var teoriaTitle = new PIXI.Text(title,{ font : '13px Monaco', fill : 0xffffff });
-        teoriaTitle.position.set( 20, 280 );
+        var teoriaTitle = new PIXI.Text(title,{ font : '12px Hack', fill : 0xffffff });
+        teoriaTitle.position.set( 20, h-35 );
 
         var teoriaTitleBg = new PIXI.Graphics();
         teoriaTitleBg.beginFill(negro);
@@ -339,7 +346,7 @@
         var teoriaBorder = new PIXI.Graphics();
         teoriaBorder.beginFill(negro);
         teoriaBorder.lineStyle(1, rojo);
-        teoriaBorder.drawRect(-1, -1, 482, 322);
+        teoriaBorder.drawRect(-1, -1, w+2, h+2);
         teoriaBorder.endFill();
 
         //teoriaSmall.filters = [borroso];
@@ -349,8 +356,19 @@
         teoriaSmall.addChild(teoriaTitle);
 
         teoriaSmall.position.set(x, y);
+
         if( id == 0 ){
+            var teoriaDestacadaTitle = new PIXI.Text('Teoría destacada',{ font : '18px Hack', fill : 0x000000 });
+            teoriaDestacadaTitle.position.set( x+20, y-15 );
+
+            var teoriaDestacadaTitleBg = new PIXI.Graphics();
+            teoriaDestacadaTitleBg.beginFill(rojo);
+            teoriaDestacadaTitleBg.drawRect(teoriaDestacadaTitle.position.x-10, teoriaDestacadaTitle.position.y-10, teoriaDestacadaTitle.width+20, teoriaDestacadaTitle.height+20);
+            teoriaDestacadaTitleBg.endFill();
+
             teoriaDestacada.addChild(teoriaSmall);
+            teoriaDestacada.addChild(teoriaDestacadaTitleBg);
+            teoriaDestacada.addChild(teoriaDestacadaTitle);
         } else {
             grupoTeorias.addChild(teoriaSmall);
         }
@@ -359,12 +377,12 @@
     }
 
     function openModal(){
-        console.log(this);
-        console.log(this.link);
+        //console.log(this);
+        //console.log(this.link);
 
         $.magnificPopup.open({
             items: {
-                src: 'single.html'
+                src: this.link,
             },
             type: 'ajax',
             tLoading: 'Loading...',
@@ -375,12 +393,23 @@
             closeOnContentClick: false,
             removalDelay: 300,
             mainClass: 'mfp-fade',
-            parseAjax: function(mfpResponse) {
-                mfpResponse.data = $(mfpResponse.data).find('.single');
-            },
-            ajaxContentAdded: function() {0
-                // Ajax content is loaded and appended to DOM
-                //console.log(this.content);
+            callbacks: {
+                open: function() {
+                },
+                afterClose: function() {
+                    teoriaDestacada.visible = true;
+                    grupoTeorias.visible = true;
+                },
+                parseAjax: function(mfpResponse) {
+                    mfpResponse.data = $(mfpResponse.data).find('#single');
+                    //console.log('Ajax content loaded:', mfpResponse);
+                },
+                ajaxContentAdded: function() {
+                    // Ajax content is loaded and appended to DOM
+                    teoriaDestacada.visible = false;
+                    grupoTeorias.visible = false;
+                    //console.log(this.content);
+                }
             }
         }, 0);
         //teoriaThumb.enabled = false;
@@ -392,12 +421,22 @@
         glitchFilters[1].randomModeOdds = 0.95;
 
         // Leyenda de Fuck Society
-        democracyText = new PIXI.Text('fuck society, our democracy has been hacked.',{ font : '24px Arial', fill : 0x333333, align : 'center'});
+        //democracyText = new PIXI.Text('fuck society, our democracy has been hacked.',{ font : '24px Arial', fill : 0x333333, align : 'center'});
+        democracyText = new PIXI.Text('TENER EL CONTROL ES UNA ILUSIÓN',{ font : '24px Arial', fill : 0x333333, align : 'center'});
         democracyText.position.set( width/2 -democracyText.width/2, height);
         democracyText.rotation = -0.05;
         c.slide(democracyText, democracyText.position.x, height-100, 120);
         grupoGlitch.addChild(democracyText);
 
+        // Fsociety Logo
+        fsocietyLogo = new Sprite( resources[assetsFolder+"img/teorias/fsociety.png"].texture );
+        fsocietyLogo.position.set(width/2,height/2);
+        fsocietyLogo.anchor.set(0.5);
+        fsocietyLogo.alpha = 0;
+        c.fadeIn(fsocietyLogo, 600);
+        c.slide(fsocietyLogo, width/2, fsocietyLogo.position.y-10, 90, "smoothstep", true, 0);
+        grupoGlitch.addChild(fsocietyLogo);
+        
         // Si se cargó el JSON, cargar Teorias
         loadJSON();
         http_request.onreadystatechange = function(){
@@ -409,75 +448,46 @@
                 //console.log(dbJSON.teorias[1].title);
 
                 // Crear teoría destacada
-                // createTeoria(id, x, y, title, thumb, url);
-                createTeoria(0, 50, 170, dbJSON.teorias[0].title, dbJSON.teorias[0].thumb, dbJSON.teorias[0].url);
+                // createTeoria(id, x, y, w, h, title, thumb, url);
+                createTeoria(0, 50, 170, 480, 320, dbJSON.posts[0].title, dbJSON.posts[0].thumbnail_images.full.url, dbJSON.posts[0].url);
 
                 // Crear teorías
-                for(var i=1; i<dbJSON.teorias.length; i++){
-                    var xTemp = width/2+Math.random()*(width/2-480-100);
-                    var yTemp = (320+30)*i;
-                    createTeoria(i, xTemp, yTemp, dbJSON.teorias[i].title, dbJSON.teorias[i].thumb, dbJSON.teorias[i].url);
+                for(var i=1; i<dbJSON.posts.length; i++){
+                    //var titleTemp = dbJSON.teorias[i].title;
+                    //var thumbTemp = dbJSON.teorias[i].thumb;
+                    //var urlTemp = dbJSON.teorias[i].url;
+
+                    var titleTemp = dbJSON.posts[i].title;
+                    var thumbTemp = dbJSON.posts[i].thumbnail_images.full.url;
+                    var urlTemp = dbJSON.posts[i].url;
+                    console.log(titleTemp +" "+ thumbTemp +" "+ urlTemp);
+
+                    var xTemp = width/2 + Math.random()*(width/2-380-50);
+                    var yTemp = (250+30)*i;
+                    createTeoria(i, xTemp, yTemp, 380, 253, titleTemp, thumbTemp, urlTemp);
                 }
             
-                TweenLite.set(teoriaDestacada, { pixi: { alpha: 0, y: -160 }});
-                TweenLite.to(teoriaDestacada, 2, {pixi: { y: 0, alpha: 1 }, delay: 1});
-                grupoGlitch.addChild(teoriaDestacada);
-
                 TweenLite.set(grupoTeorias, { pixi: { alpha: 0, y: height/2-200 }});
                 TweenLite.to(grupoTeorias, 2, {pixi: { y: -160, alpha: 1 }, delay: 1});
                 grupoGlitch.addChild(grupoTeorias);
 
-                state = stateTeorias;
+                TweenLite.set(teoriaDestacada, { pixi: { alpha: 0, y: -160 }});
+                TweenLite.to(teoriaDestacada, 2, {pixi: { y: 0, alpha: 1 }, delay: 1});
+                grupoGlitch.addChild(teoriaDestacada);
+
+                state = loopTeorias;
             }
 
         }
     }
 
 
-    function stateTeorias(){
+    function loopTeorias(){
 
         // Mover Leyenda
         if (Math.random() > 0.99) {
             democracyText.position.set( Math.random()*width - democracyText.width, Math.random()*height - democracyText.height);
         }
-        //TweenLite.to(loginFunTheroy, 2, {pixi: { y: -100, scale: 1 }});
-        //TweenLite.to(loginBtn, 1, {pixi: { opacity: 0, ease: Expo.easeOut }});
-
-        // Desaparece Elliot
-        /*
-        if( grupoLogin.alpha > 0 ){
-            grupoLogin.alpha -= 0.025;
-        } else {
-            grupoGlitch.removeChild(grupoLogin);
-        }
-        count += 0.005;
-        var blurAmount = Math.cos(count);
-        borroso.blur = blurAmount*5;
-        */
-    }
-
-
-    // STATE: teoria
-    function initTeoria(){
-    }
-
-    function stateTeoria(){
-    }
-
-
-    // STATE: votando
-    function initVotando(){
-    }
-
-    function stateVotando(){
-    }
-
-
-    // STATE: hacked
-    function initHacked(){
-    }
-
-    function stateHacked(){
     }
 
 
@@ -490,6 +500,7 @@
         if( state === loopLogin ){
             grupoLogin.position.set(width/2, height/2);
             loginBtn.position.set( width/2, height/2 + 100 );
+        } else if( state === loopTeorias ){
         }
     }
 
@@ -507,7 +518,7 @@
         var e = window.event || e; // old IE support
         var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 
-        if( state == stateTeorias ){
+        if( state == loopTeorias ){
             grupoTeorias.position.y = Math.max( (grupoTeorias.height*-1), Math.min( -160, grupoTeorias.position.y+(30 * delta) ));
         }
 

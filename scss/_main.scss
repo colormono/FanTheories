@@ -3,9 +3,11 @@
 /* PALETA */
 
 $rojo: #ed0532;
+$celeste: #00fefe;
+$verde: #00f80b;
 $blanco: #FFFFFF;
 $negro: #0e0e0e;
-$gris: #434343;
+$gris: #666666;
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -56,6 +58,39 @@ table {
     border-spacing: 0;
 }
 
+
+/* Browser Scroll & Placeholders */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: $negro; 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $rojo; 
+}
+
+::-webkit-input-placeholder {
+   color: $celeste;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: $celeste;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $celeste;  
+}
+
+:-ms-input-placeholder {  
+   color: $celeste;  
+}
+
 /* GLOBAL */
 
 * {
@@ -66,8 +101,8 @@ table {
 body {
     background-color: #000000;
     color: #FFFFFF;
-    font-family: "Monaco", monospace, courier;
-    font-size: 13px;
+    font-family: 'Hack', 'Monaco', monospace, courier;
+    font-size: 12px;
 }
 
 body.app {
@@ -98,17 +133,20 @@ h4{
     padding: 10px 25px;
     padding-left: 25px + $letter-spacing/2;
     letter-spacing: $letter-spacing;
-    background-color: $blanco;
+    background-color: $rojo;
     color: $negro;
     box-shadow: 5px 5px 0px rgba($gris, 0.5);
     opacity: 0.9;
 }
 
-.btn-secondary{
+.btn-rojo{
     padding: 5px 15px;
-    background-color: $negro;
-    color: $blanco;
-    border: 1px solid $rojo;
+    background-color: $rojo;
+    color: $negro;
+
+    &:hover{
+        color: $blanco;
+    }
 }
 
 .btn-black{
@@ -143,22 +181,46 @@ h4{
 
 /* SECTIONS */
 .section{
-    padding: 60px;
+}
+
+.single{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    overflow: hidden;
+    z-index: 10;
+    //max-width: 720px;
+    @extend .clearfix;
+
+    background-color: rgba(#000, 0.95);
+    border: 4px double $rojo;
+    padding: 20px;
 }
 
 .article{
-    position: relative;
-    text-align: left;
-    line-height: 1.3;
+    //position: relative;
+    //text-align: left;
+    //line-height: 1.3;
 
-    .container{
-        border: 1px solid $rojo;
+    float: left;
+    width: 50%;
+    margin: 0px;
+    height: 90%;
+    overflow-y: scroll;
+
+    &:hover{
+        img {
+            filter: grayscale(0);
+        }
     }
 
     .container{
         position: relative;
         z-index: 12;
         background: $negro;
+        border: 1px solid $rojo;
     }
 
     p{
@@ -170,14 +232,21 @@ h4{
         position: relative;
         letter-spacing: 5px;
 
+        figure{
+            //display: none;
+            width: 75%;
+        }
+        /*
         img {
             filter: grayscale(1);
             transition: all 0.5s ease-in-out;
         }
+        */
+
         h3{
-            position: absolute;
-            top: -35px;
-            left: 10px;
+            //position: absolute;
+            //top: -35px;
+            //left: 10px;
             z-index: 12;
         }
         small{
@@ -186,17 +255,16 @@ h4{
             font-size: 11px;
         }
         strong{
-            display: block;
+            display: inline-block;
             color: $negro;
             background-color: $rojo;
             padding: 5px 10px;
-            font-weight: bold;
-            font-size: 18px;
+            font-size: 14px;
         }
         h1{
-            position: absolute;
-            bottom: 15px;
-            left: 10px;
+            //position: absolute;
+            //bottom: 15px;
+            //left: 10px;
             font-weight: bold; 
             font-size: 18px;
             display: inline-block;
@@ -206,16 +274,10 @@ h4{
             border: 1px solid $rojo;
             box-shadow: 4px 4px 0px -1px $rojo;
         }
-
-        &:hover{
-            img {
-                filter: grayscale(0);
-            }
-        }
     }
 
     .body{
-        padding: 15px 20px;
+        padding: 20px 20px 20px 0px;
     
         strong{
             color: $rojo;
@@ -235,16 +297,132 @@ h4{
         text-align: right;
         padding: 0px 15px 25px;
     }
+}
 
-    .share{
-        li{
-            display: inline-block;
-            font-size: 24px;
-        }
+.share{
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+
+    li{
+        display: inline-block;
+        font-size: 18px;
+    }
+    .icon{
+        font-size: 24px;
+        line-height: 15px;
+    
         a:hover{
             color: $rojo;
         }
     }
+}
+
+.opiniones {
+    float: right;
+    width: 47%;
+    margin: 0px;
+    height: 90%;
+    overflow-y: scroll;
+
+    h4{
+        display: inline-block;
+        color: $negro;
+        background-color: $celeste;
+        padding: 5px 10px;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+}
+
+.comments-form {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    width: 46%;
+
+    .comment-box{
+        //background: rgba($celeste, 0.3);
+        background: $negro;
+        padding: 5px;
+        @extend .clearfix;
+    }
+
+    .frmName{
+        color: $celeste;
+        width: 20%;
+        float: left;
+    }
+    .frmComment{
+        color: $celeste;
+        width: 60%;
+        float: left;
+    }
+    .frmSend{
+        color: $celeste;
+        width: 20%;
+        float: right;
+        text-align: right;
+    }
+
+    input,
+    textarea{
+        //width: 100%;
+        border: none;
+        background: transparent;
+        font-family: 'Hack','Monaco', monospace, courier;
+        font-size: 13px;
+        border: none;
+        padding: 5px;
+
+        &:focus{
+            outline: none;
+        }
+    }
+    input[type="submit"]{
+        background: $celeste;
+        color: $negro;
+        width: auto;
+        cursor: default;
+    }
+    /*
+    a.fsociety-photo{
+        text-align: center;
+        display: block;
+        width: 65px;
+        height: 65px;
+        line-height: 72px;
+        background: $rojo;
+        font-size: 24px;
+    }
+    */
+}
+
+.comments{
+    line-height: 1.3;
+    padding-right: 20px;
+
+    li:hover .reactions{ 
+        opacity: 1;
+    }
+
+    li, p{
+        margin-bottom: 10px;
+    }
+
+    a:hover{
+        color: $rojo;
+    }
+
+    .date{ float: left; margin-right: 5px; color: $rojo; }
+    .user{ float: left; margin-right: 5px; color: $celeste; }
+    .comment{ color: $gris; }
+    .reactions{ 
+        display: block; 
+        opacity: 0;
+        margin-top: -10px;
+    }
+
 }
 
 /* FOOTER */
@@ -273,15 +451,13 @@ h4{
 
 /* MODALS */
 
-.single{
-    max-width: 720px;
-    margin: 0px auto;
-}
-
 .mfp-bg {
     background-color: #000;
+    position: relative;
+    z-index: 100;
 }
 .mfp-fade.mfp-bg {
+    top: 100px;
   opacity: 0;
   transition: all 0.5s ease-out;
 }
@@ -292,73 +468,61 @@ h4{
 
 .mfp-fade.mfp-bg.mfp-removing {
   opacity: 0;
+  top: 0px;
 }
 
 .mfp-fade.mfp-wrap .mfp-content {
   opacity: 0;
+  top: 100px;
   transition: all 0.5s ease-out;
+  width: 100%;
+  height: 100%;
 }
 
 .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
   opacity: 1;
+  top: 0px;
 }
 
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
   opacity: 0;
+  top: 100px;
 }
 
 .mfp-close-btn-in .mfp-close{
     color: $rojo;
     font-size: 70px;
-    top: 10px;
+    top: 0px;
     opacity: 1;
+    background: #000;
 }
+
+
+
+
+
 
 
 /* COMENTARIOS */
+.comments-list{
+    padding-right: 20px;
+}
 
 .comments-container {
-    margin: 60px auto 15px;
-    width: 768px;
+    //margin: 60px auto 15px;
+    //width: 768px;
+    //float: left;
+    //width: 50%;
 }
 
-.comments-form {
-    input,
-    textarea{
-        width: 100%;
-        border: none;
-        background: transparent;
-        color: #FFFFFF;
-        font-family: monospace, courier;
-        font-size: 13px;
-        border: none;
-        padding: 4px;
-    }
-    input[type="submit"]{
-        background: $rojo;
-        color: #FFFFFF;
-        border-radius: 4px;
-        width: auto;
-        cursor: default;
-    }
-    a.fsociety-photo{
-        text-align: center;
-        display: block;
-        width: 65px;
-        height: 65px;
-        line-height: 72px;
-        background: $rojo;
-        font-size: 24px;
-    }
-}
-
-.comments-list {
-    position: relative;
-}
 
 /**
  * Lineas / Detalles
  -----------------------*/
+ .comments-list {
+    position: relative;
+}
+
 .comments-list:before {
     content: '';
     width: 2px;
@@ -447,7 +611,7 @@ h4{
  * Caja del Comentario
  ---------------------------*/
 .comments-list .comment-box {
-    width: 680px;
+    width: 80%;
     float: right;
     position: relative;
 }
@@ -472,7 +636,7 @@ h4{
 }
 
 .reply-list .comment-box {
-    width: 610px;
+    width: 75%;
 }
 .comment-box .comment-head {
     background: $negro;
@@ -535,4 +699,26 @@ h4{
     .reply-list .comment-box {
         width: 320px;
     }
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
 }

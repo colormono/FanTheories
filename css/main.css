@@ -1,3 +1,37 @@
+/*!
+ *  Hack v2.020 - https://sourcefoundry.org/hack/
+ *  Licenses - Fonts: Hack Open Font License + Bitstream Vera license, CSS: MIT License
+ */
+/* FONT PATHS
+ * -------------------------- */
+@font-face {
+  font-family: 'Hack';
+  src: url("../fonts/eot/latin/hack-regular-latin-webfont.eot?v=2.020");
+  src: url("../fonts/eot/latin/hack-regular-latin-webfont.eot?#iefix&v=2.020") format("embedded-opentype"), url("../fonts/woff2/latin/hack-regular-latin-webfont.woff2?v=2.020") format("woff2"), url("../fonts/woff/latin/hack-regular-latin-webfont.woff?v=2.020") format("woff"), url("../fonts/web-ttf/latin/hack-regular-latin-webfont.ttf?v=2.020") format("truetype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Hack';
+  src: url("../fonts/eot/latin/hack-bold-latin-webfont.eot?v=2.020");
+  src: url("../fonts/eot/latin/hack-bold-latin-webfont.eot?#iefix&v=2.020") format("embedded-opentype"), url("../fonts/woff2/latin/hack-bold-latin-webfont.woff2?v=2.020") format("woff2"), url("../fonts/woff/latin/hack-bold-latin-webfont.woff?v=2.020") format("woff"), url("../fonts/web-ttf/latin/hack-bold-latin-webfont.ttf?v=2.020") format("truetype");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Hack';
+  src: url("../fonts/eot/latin/hack-italic-latin-webfont.eot?v=2.020");
+  src: url("../fonts/eot/latin/hack-italic-latin-webfont.eot?#iefix&v=2.020") format("embedded-opentype"), url("../fonts/woff2/latin/hack-italic-latin-webfont.woff2?v=2.020") format("woff2"), url("../fonts/woff/latin/hack-italic-latin-webfont.woff?v=2.020") format("woff"), url("../fonts/web-ttf/latin/hack-italic-latin-webfont.ttf?v=2.020") format("truetype");
+  font-weight: 400;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Hack';
+  src: url("../fonts/eot/latin/hack-bolditalic-latin-webfont.eot?v=2.020");
+  src: url("../fonts/eot/latin/hack-bolditalic-latin-webfont.eot?#iefix&v=2.020") format("embedded-opentype"), url("../fonts/woff2/latin/hack-bolditalic-latin-webfont.woff2?v=2.020") format("woff2"), url("../fonts/woff/latin/hack-bolditalic-latin-webfont.woff?v=2.020") format("woff"), url("../fonts/web-ttf/latin/hack-bolditalic-latin-webfont.ttf?v=2.020") format("truetype");
+  font-weight: 700;
+  font-style: italic; }
+
 @font-face {
   font-family: "mrrobot";
   src: url("../fonts/mrrobot.eot");
@@ -98,6 +132,32 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/* Browser Scroll & Placeholders */
+::-webkit-scrollbar {
+  width: 6px; }
+
+::-webkit-scrollbar-track {
+  background-color: #0e0e0e;
+  border-radius: 10px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #ed0532; }
+
+::-webkit-input-placeholder {
+  color: #00fefe; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #00fefe; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #00fefe; }
+
+:-ms-input-placeholder {
+  color: #00fefe; }
+
 /* GLOBAL */
 * {
   padding: 0;
@@ -106,8 +166,8 @@ table {
 body {
   background-color: #000000;
   color: #FFFFFF;
-  font-family: "Monaco", monospace, courier;
-  font-size: 13px; }
+  font-family: 'Hack', 'Monaco', monospace, courier;
+  font-size: 12px; }
 
 body.app {
   overflow: hidden;
@@ -133,16 +193,17 @@ h4 {
   padding: 10px 25px;
   padding-left: 30px;
   letter-spacing: 10px;
-  background-color: #FFFFFF;
+  background-color: #ed0532;
   color: #0e0e0e;
-  box-shadow: 5px 5px 0px rgba(67, 67, 67, 0.5);
+  box-shadow: 5px 5px 0px rgba(102, 102, 102, 0.5);
   opacity: 0.9; }
 
-.btn-secondary {
+.btn-rojo {
   padding: 5px 15px;
-  background-color: #0e0e0e;
-  color: #FFFFFF;
-  border: 1px solid #ed0532; }
+  background-color: #ed0532;
+  color: #0e0e0e; }
+  .btn-rojo:hover {
+    color: #FFFFFF; }
 
 .btn-black {
   display: inline-block;
@@ -170,50 +231,59 @@ h4 {
   z-index: 5; }
 
 /* SECTIONS */
-.section {
-  padding: 60px; }
+.single {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  overflow: hidden;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.95);
+  border: 4px double #ed0532;
+  padding: 20px; }
 
 .article {
-  position: relative;
-  text-align: left;
-  line-height: 1.3; }
-  .article .container {
-    border: 1px solid #ed0532; }
+  float: left;
+  width: 50%;
+  margin: 0px;
+  height: 90%;
+  overflow-y: scroll; }
+  .article:hover img {
+    -webkit-filter: grayscale(0);
+            filter: grayscale(0); }
   .article .container {
     position: relative;
     z-index: 12;
-    background: #0e0e0e; }
+    background: #0e0e0e;
+    border: 1px solid #ed0532; }
   .article p {
     padding-bottom: 15px;
     line-height: 1.5; }
   .article .title {
     position: relative;
-    letter-spacing: 5px; }
-    .article .title img {
-      -webkit-filter: grayscale(1);
-              filter: grayscale(1);
-      -webkit-transition: all 0.5s ease-in-out;
-      transition: all 0.5s ease-in-out; }
+    letter-spacing: 5px;
+    /*
+        img {
+            filter: grayscale(1);
+            transition: all 0.5s ease-in-out;
+        }
+        */ }
+    .article .title figure {
+      width: 75%; }
     .article .title h3 {
-      position: absolute;
-      top: -35px;
-      left: 10px;
       z-index: 12; }
     .article .title small {
       display: block;
       padding: 5px 10px;
       font-size: 11px; }
     .article .title strong {
-      display: block;
+      display: inline-block;
       color: #0e0e0e;
       background-color: #ed0532;
       padding: 5px 10px;
-      font-weight: bold;
-      font-size: 18px; }
+      font-size: 14px; }
     .article .title h1 {
-      position: absolute;
-      bottom: 15px;
-      left: 10px;
       font-weight: bold;
       font-size: 18px;
       display: inline-block;
@@ -222,11 +292,8 @@ h4 {
       padding: 10px;
       border: 1px solid #ed0532;
       box-shadow: 4px 4px 0px -1px #ed0532; }
-    .article .title:hover img {
-      -webkit-filter: grayscale(0);
-              filter: grayscale(0); }
   .article .body {
-    padding: 15px 20px; }
+    padding: 20px 20px 20px 0px; }
     .article .body strong {
       color: #ed0532;
       background-color: #ed0532; }
@@ -235,11 +302,106 @@ h4 {
   .article .more {
     text-align: right;
     padding: 0px 15px 25px; }
-  .article .share li {
+
+.share {
+  position: absolute;
+  bottom: 30px;
+  left: 20px; }
+  .share li {
     display: inline-block;
-    font-size: 24px; }
-  .article .share a:hover {
+    font-size: 18px; }
+  .share .icon {
+    font-size: 24px;
+    line-height: 15px; }
+    .share .icon a:hover {
+      color: #ed0532; }
+
+.opiniones {
+  float: right;
+  width: 47%;
+  margin: 0px;
+  height: 90%;
+  overflow-y: scroll; }
+  .opiniones h4 {
+    display: inline-block;
+    color: #0e0e0e;
+    background-color: #00fefe;
+    padding: 5px 10px;
+    font-size: 13px;
+    margin-bottom: 20px; }
+
+.comments-form {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  width: 46%;
+  /*
+    a.fsociety-photo{
+        text-align: center;
+        display: block;
+        width: 65px;
+        height: 65px;
+        line-height: 72px;
+        background: $rojo;
+        font-size: 24px;
+    }
+    */ }
+  .comments-form .comment-box {
+    background: #0e0e0e;
+    padding: 5px; }
+  .comments-form .frmName {
+    color: #00fefe;
+    width: 20%;
+    float: left; }
+  .comments-form .frmComment {
+    color: #00fefe;
+    width: 60%;
+    float: left; }
+  .comments-form .frmSend {
+    color: #00fefe;
+    width: 20%;
+    float: right;
+    text-align: right; }
+  .comments-form input,
+  .comments-form textarea {
+    border: none;
+    background: transparent;
+    font-family: 'Hack','Monaco', monospace, courier;
+    font-size: 13px;
+    border: none;
+    padding: 5px; }
+    .comments-form input:focus,
+    .comments-form textarea:focus {
+      outline: none; }
+  .comments-form input[type="submit"] {
+    background: #00fefe;
+    color: #0e0e0e;
+    width: auto;
+    cursor: default; }
+
+.comments {
+  line-height: 1.3;
+  padding-right: 20px; }
+  .comments li:hover .reactions {
+    opacity: 1; }
+  .comments li, .comments p {
+    margin-bottom: 10px; }
+  .comments a:hover {
     color: #ed0532; }
+  .comments .date {
+    float: left;
+    margin-right: 5px;
+    color: #ed0532; }
+  .comments .user {
+    float: left;
+    margin-right: 5px;
+    color: #00fefe; }
+  .comments .comment {
+    color: #666666; }
+  .comments .reactions {
+    display: block;
+    opacity: 0;
+    margin-top: -10px; }
 
 /* FOOTER */
 #footer {
@@ -259,14 +421,13 @@ h4 {
   right: 0px; }
 
 /* MODALS */
-.single {
-  max-width: 720px;
-  margin: 0px auto; }
-
 .mfp-bg {
-  background-color: #000; }
+  background-color: #000;
+  position: relative;
+  z-index: 100; }
 
 .mfp-fade.mfp-bg {
+  top: 100px;
   opacity: 0;
   -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out; }
@@ -275,63 +436,42 @@ h4 {
   opacity: 0.8; }
 
 .mfp-fade.mfp-bg.mfp-removing {
-  opacity: 0; }
+  opacity: 0;
+  top: 0px; }
 
 .mfp-fade.mfp-wrap .mfp-content {
   opacity: 0;
+  top: 100px;
   -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out; }
+  transition: all 0.5s ease-out;
+  width: 100%;
+  height: 100%; }
 
 .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
-  opacity: 1; }
+  opacity: 1;
+  top: 0px; }
 
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
-  opacity: 0; }
+  opacity: 0;
+  top: 100px; }
 
 .mfp-close-btn-in .mfp-close {
   color: #ed0532;
   font-size: 70px;
-  top: 10px;
-  opacity: 1; }
+  top: 0px;
+  opacity: 1;
+  background: #000; }
 
 /* COMENTARIOS */
-.comments-container {
-  margin: 60px auto 15px;
-  width: 768px; }
-
-.comments-form input,
-.comments-form textarea {
-  width: 100%;
-  border: none;
-  background: transparent;
-  color: #FFFFFF;
-  font-family: monospace, courier;
-  font-size: 13px;
-  border: none;
-  padding: 4px; }
-
-.comments-form input[type="submit"] {
-  background: #ed0532;
-  color: #FFFFFF;
-  border-radius: 4px;
-  width: auto;
-  cursor: default; }
-
-.comments-form a.fsociety-photo {
-  text-align: center;
-  display: block;
-  width: 65px;
-  height: 65px;
-  line-height: 72px;
-  background: #ed0532;
-  font-size: 24px; }
-
 .comments-list {
-  position: relative; }
+  padding-right: 20px; }
 
 /**
  * Lineas / Detalles
  -----------------------*/
+.comments-list {
+  position: relative; }
+
 .comments-list:before {
   content: '';
   width: 2px;
@@ -413,7 +553,7 @@ h4 {
  * Caja del Comentario
  ---------------------------*/
 .comments-list .comment-box {
-  width: 680px;
+  width: 80%;
   float: right;
   position: relative; }
 
@@ -435,7 +575,7 @@ h4 {
   left: -12px; }
 
 .reply-list .comment-box {
-  width: 610px; }
+  width: 75%; }
 
 .comment-box .comment-head {
   background: #0e0e0e;
@@ -492,3 +632,26 @@ h4 {
     width: 390px; }
   .reply-list .comment-box {
     width: 320px; } }
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before, .single:before, .comments-form .comment-box:before,
+.clearfix:after,
+.single:after,
+.comments-form .comment-box:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.clearfix:after, .single:after, .comments-form .comment-box:after {
+  clear: both; }
