@@ -1,3 +1,10 @@
+// Responsive
+var redirectUrl = "http://mrrobot.spacego.tv/m/";
+var tablet = 768;
+if ( window.innerWidth <= 768) {
+    window.location = redirectUrl;
+}
+
 'use strict';
 (function () {
 
@@ -28,7 +35,6 @@
     var state = stateLoading;
     var rojo = 0xED0532;
     var negro = 0x000000;
-    var tablet = 768;
 
     var assetsFolder = "wp-content/themes/mrrobot/";
 
@@ -69,7 +75,7 @@
         //var data_file = "data.json";
         //var data_file = "http://localhost:8888/websites/wordpress/?json=get_posts&order=ASC";
         //var data_file = "http://socialsnacksandbox.com/mrrobot/wordpress/?json=get_posts&order=ASC";
-        var data_file = "?json=get_posts&order=ASC";
+        var data_file = "?json=get_posts";
         http_request = new XMLHttpRequest();
         try{
             // Opera 8.0+, Firefox, Chrome, Safari
@@ -97,7 +103,7 @@
 
 
     // Setup
-    var stats, count=0, t, c, pointer;
+    var stats, count=0, c;
     var grupoFondo, bg, box, rayitas, rayitas2, ddos;
     var grupoSobre, logoMrobot, logoSpace, btnTemporada, txtEstreno;
 
@@ -111,10 +117,6 @@
 
         // Tweening (https://github.com/kittykatattack/charm)
         c = new Charm(PIXI);
-
-        // Make the pointer (https://github.com/kittykatattack/tink)
-        t = new Tink(PIXI, renderer.view);
-        pointer = t.makePointer();
 
         // Sobre (Header)
         //https://github.com/noprotocol/gsap-pixi-plugin
@@ -130,25 +132,12 @@
         logoMrobot.position.x = 30;
         txtEstreno = new PIXI.Text( '////ESTRENO////\nJUEVES 14 DE JULIO 23HS.', { font: '12px Hack', fill: '#FFFFFF', align: 'left' });
         txtEstreno.position.set(245, 2);
+        logoMrobot.interactive = true;
         logoMrobot.buttonMode = true;
-        t.makeInteractive(logoMrobot);
-
-        logoMrobot.over = function(){
-            if( state == loopTeorias ){
-                logoMrobot.alpha = 0.3;
-            }
-        };
-        logoMrobot.out = function(){
-            if( state == loopTeorias ){
-                logoMrobot.alpha = 1.0;
-            }
-        };
-        logoMrobot.tap = function(){
-            if( state == loopTeorias ){
-                logoMrobot.alpha = 1.0;
-                outTeorias();
-            }
-        };
+        logoMrobot.on('mouseover', logoMrobotOver);
+        logoMrobot.on('mouseout', logoMrobotOut);
+        logoMrobot.on('mouseup', logoMrobotClick);
+        logoMrobot.on('touchend', logoMrobotClick);
 
         // Logo Space
         logoSpace = new Sprite( resources[assetsFolder+"img/logo-space.png"].texture );
@@ -161,8 +150,9 @@
         btnTemporada.width = 140;
         btnTemporada.height = 29.67;
         btnTemporada.position.x = width-logoSpace.width-btnTemporada.width-30*2;
+        btnTemporada.interactive = true;
         btnTemporada.buttonMode = true;
-        t.makeInteractive(btnTemporada);
+        //t.makeInteractive(btnTemporada);
 
         btnTemporada.over = function(){
             btnTemporada.tint = rojo;
@@ -205,7 +195,7 @@
         grupoSobre.addChild(logoMrobot);
         grupoSobre.addChild(txtEstreno);
         grupoSobre.addChild(logoSpace);
-        grupoSobre.addChild(btnTemporada);
+        //grupoSobre.addChild(btnTemporada);
         stage.addChild(grupoSobre);
 
         // Iniciar secuencia
@@ -214,6 +204,26 @@
         // Start Loop
         loop();
     }
+
+    function logoMrobotOver(){
+        if( state == loopTeorias ){
+            this.alpha = 0.3;
+        }
+    }
+
+    function logoMrobotOut(){
+        if( state == loopTeorias ){
+            this.alpha = 1.0;
+        }
+    }
+
+    function logoMrobotClick(){
+        if( state == loopTeorias ){
+            this.alpha = 1.0;
+            outTeorias();
+        }
+    }
+
 
     // Loop
     function loop(){
@@ -224,7 +234,6 @@
         // Updates
         updateGlobal();
         c.update(); // Charm
-        t.update(); // Tink
         state(); // State
         stats.update(); // Stats
 
@@ -311,27 +320,36 @@
         loginBtn = new Sprite( resources[assetsFolder+"img/login/unete.png"].texture );
         loginBtn.anchor.set(0.5);
         loginBtn.position.set( Math.floor(width/2), Math.floor(height/2) + 200 );
+        loginBtn.interactive = true;
+        loginBtn.buttonMode = true;
+        loginBtn.on('mouseover', loginBtnOver);
+        loginBtn.on('mouseout', loginBtnOut);
+        loginBtn.on('mouseup', loginBtnClick);
+        loginBtn.on('touchend', loginBtnClick);
+
         TweenLite.set(loginBtn, { pixi: {
             alpha: 0,
             y: Math.floor(height/2) + 200
         }});
-        t.makeInteractive(loginBtn);
-        stage.addChild(loginBtn);
 
-        loginBtn.over = function(){
-            loginBtn.tint = rojo;
-        };
-        loginBtn.out = function(){
-            loginBtn.tint = 0xFFFFFF;
-        };
-        loginBtn.tap = function(){
-            loginBtn.enabled = false;
-            //loginBtnAnim.pause();
-            outLogin();
-        };
+        stage.addChild(loginBtn);
 
         // Animar
         state = loopLogin;
+    }
+
+    function loginBtnOver(){
+        this.tint = rojo;
+    }
+
+    function loginBtnOut(){
+        this.tint = 0xFFFFFF;
+    }
+
+    function loginBtnClick(){
+        this.enabled = false;
+        //loginBtnAnim.pause();
+        outLogin();
     }
 
     function loopLogin(){
@@ -583,7 +601,7 @@
         // Redirect en pantallas chicas
         if( width < tablet ){
             console.log('Redirecing to the mobile version...');
-            window.location.replace('http://socialsnack.com');
+            window.location.replace(redirectUrl);
         }
 
         // State specific

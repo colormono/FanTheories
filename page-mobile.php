@@ -1,8 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ * Template name: mobile
  *
  * @package mrrobot
  */
@@ -22,8 +20,18 @@ get_header(); ?>
 
     <div class="section">
         <div id="single" class="single">
+        <?php 
+        // the query
+        $teorias = array(
+            'post_type' => 'post',
+            'posts_per_page' => -1
+        );
+        
+        $query_teorias = new WP_Query( $teorias );
+        if ( $query_teorias->have_posts() ) :
+            while ( $query_teorias->have_posts() ) : $query_teorias->the_post();
 
-        <?php while ( have_posts() ) : the_post(); ?>
+        ?>
             <article class="article">
 
                 <hgroup class="title">
@@ -33,31 +41,25 @@ get_header(); ?>
                         <strong>DESTACADA</strong>
                     </h3>
                     <?php endif; ?>
-                    <h1><?php the_title(); ?></h1>
+                    <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
                 </hgroup>
 
                 <figure>
+                    <a href="<?php the_permalink(); ?>">
                     <?php if( has_post_thumbnail() ): ?>
                     <?php the_post_thumbnail(); ?>
                     <?php else : ?>
                     <img src="<?php bloginfo('template_url'); ?>/img/photos/photo-01.jpg" alt="">
                     <?php endif; ?>
+                    </a>
                 </figure>
 
-                <div class="body">
-                	<?php the_content(); ?>
-                </div>
-
-                <?php 
-                    // Comments
-                    if ( comments_open() || get_comments_number() ) :
-                        comments_template();
-                    endif;
-                ?>
-
             </article>
-		<?php endwhile; ?>
-
+        <?php 
+            endwhile; 
+            wp_reset_postdata();
+        endif; 
+        ?>
         </div><!-- /.single -->
     </div><!-- /.section -->
 
