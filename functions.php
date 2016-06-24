@@ -77,3 +77,13 @@ require get_template_directory() . '/inc/template-tags.php';
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
+
+/* Change Mystery man avatar */
+add_filter( 'avatar_defaults', 'newgravatar' );
+
+function newgravatar($avatar_defaults) {
+    //$myavatar = get_bloginfo('template_directory') . '/img/avatar-default.jpg';
+    $myavatar = "mrrobot.spacego.tv/wp-content/themes/mrrobot/img/avatar-default.jpg";
+    $avatar_defaults[$myavatar] = "Own";
+    return $avatar_defaults;
+}

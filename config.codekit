@@ -65,42 +65,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/html\/index-1.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/html\/index-1.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/html\/index.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/html\/index.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/html\/single-1.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/html\/single-1.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/html\/single.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/html\/single.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/img\/avatar-default.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -163,6 +127,17 @@
 		"initialSize": 5921,
 		"inputAbbreviatedPath": "\/img\/login\/fantheory.png",
 		"outputAbbreviatedPath": "\/img\/login\/fantheory.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/login\/proximamente.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2485,
+		"inputAbbreviatedPath": "\/img\/login\/proximamente.png",
+		"outputAbbreviatedPath": "\/img\/login\/proximamente.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -332,6 +307,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/ui\/btn-temporada1.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2017,
+		"inputAbbreviatedPath": "\/img\/ui\/btn-temporada1.png",
+		"outputAbbreviatedPath": "\/img\/ui\/btn-temporada1.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/ui\/img-xx.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -339,6 +325,17 @@
 		"initialSize": 1161,
 		"inputAbbreviatedPath": "\/img\/ui\/img-xx.png",
 		"outputAbbreviatedPath": "\/img\/ui\/img-xx.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/ui\/scroll.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1714,
+		"inputAbbreviatedPath": "\/img\/ui\/scroll.png",
+		"outputAbbreviatedPath": "\/img\/ui\/scroll.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -447,12 +444,12 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/vendor\/Charm.js": {
+	"\/js\/vendor\/charm.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/vendor\/Charm.js",
-		"outputAbbreviatedPath": "\/js\/vendor\/min\/Charm-min.js",
+		"inputAbbreviatedPath": "\/js\/vendor\/charm.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/min\/charm-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,

@@ -28,7 +28,7 @@
 
 <?php wp_head(); ?>
 </head>
-<body class="<?php if( is_front_page() ){ echo 'app '; } ?>no-debug">
+<body class="<?php if( is_front_page() ){ echo 'app '; } else { echo 'page '; } ?>no-debug">
     <!--[if lt IE 8]>
         <p class="browserupgrade">Disculpas, no aceptamos usuarios con IE! Muévete a un <a href="http://browsehappy.com/">navegador moderno</a> como Chrome o Firefox.</p>
     <![endif]-->

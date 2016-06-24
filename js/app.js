@@ -28,6 +28,7 @@
     var state = stateLoading;
     var rojo = 0xED0532;
     var negro = 0x000000;
+    var tablet = 768;
 
     var assetsFolder = "wp-content/themes/mrrobot/";
 
@@ -36,12 +37,14 @@
         .add([
             assetsFolder+"img/logo-mrrobot-rojo.png",
             assetsFolder+"img/logo-space.png",
+            assetsFolder+"img/ui/btn-temporada1.png",
             assetsFolder+"img/bg.jpg",
             assetsFolder+"img/login/box.png",
             assetsFolder+"img/login/elliot.png",
             assetsFolder+"img/login/fantheory.png",
             assetsFolder+"img/login/unete.png",
-            assetsFolder+"img/teorias/fsociety.png"
+            assetsFolder+"img/teorias/fsociety.png",
+            assetsFolder+"img/ui/scroll.png"
         ])
         .on("progress", loadProgressHandler)
         .load(setup);
@@ -65,7 +68,8 @@
     function loadJSON(){
         //var data_file = "data.json";
         //var data_file = "http://localhost:8888/websites/wordpress/?json=get_posts&order=ASC";
-        var data_file = "http://socialsnacksandbox.com/mrrobot/wordpress/?json=get_posts&order=ASC";
+        //var data_file = "http://socialsnacksandbox.com/mrrobot/wordpress/?json=get_posts&order=ASC";
+        var data_file = "?json=get_posts&order=ASC";
         http_request = new XMLHttpRequest();
         try{
             // Opera 8.0+, Firefox, Chrome, Safari
@@ -95,7 +99,7 @@
     // Setup
     var stats, count=0, t, c, pointer;
     var grupoFondo, bg, box, rayitas, rayitas2, ddos;
-    var grupoSobre, logoMrobot, logoSpace, txtEstreno;
+    var grupoSobre, logoMrobot, logoSpace, btnTemporada, txtEstreno;
 
     function setup(){
 
@@ -126,12 +130,50 @@
         logoMrobot.position.x = 30;
         txtEstreno = new PIXI.Text( '////ESTRENO////\nJUEVES 14 DE JULIO 23HS.', { font: '12px Hack', fill: '#FFFFFF', align: 'left' });
         txtEstreno.position.set(245, 2);
+        logoMrobot.buttonMode = true;
+        t.makeInteractive(logoMrobot);
+
+        logoMrobot.over = function(){
+            if( state == loopTeorias ){
+                logoMrobot.alpha = 0.3;
+            }
+        };
+        logoMrobot.out = function(){
+            if( state == loopTeorias ){
+                logoMrobot.alpha = 1.0;
+            }
+        };
+        logoMrobot.tap = function(){
+            if( state == loopTeorias ){
+                logoMrobot.alpha = 1.0;
+                outTeorias();
+            }
+        };
 
         // Logo Space
         logoSpace = new Sprite( resources[assetsFolder+"img/logo-space.png"].texture );
         logoSpace.width = 140;
         logoSpace.height = 29.67;
         logoSpace.position.x = width-logoSpace.width-30;
+
+        // Btn Temporadas
+        btnTemporada = new Sprite( resources[assetsFolder+"img/ui/btn-temporada1.png"].texture );
+        btnTemporada.width = 140;
+        btnTemporada.height = 29.67;
+        btnTemporada.position.x = width-logoSpace.width-btnTemporada.width-30*2;
+        btnTemporada.buttonMode = true;
+        t.makeInteractive(btnTemporada);
+
+        btnTemporada.over = function(){
+            btnTemporada.tint = rojo;
+        };
+        btnTemporada.out = function(){
+            btnTemporada.tint = 0xFFFFFF;
+        };
+        btnTemporada.tap = function(){
+            btnTemporada.tint = 0xFFFFFF;
+            window.open('http://socialsnack.com','_blank');
+        };
 
         // Fondo
         grupoFondo = new Container();
@@ -163,6 +205,7 @@
         grupoSobre.addChild(logoMrobot);
         grupoSobre.addChild(txtEstreno);
         grupoSobre.addChild(logoSpace);
+        grupoSobre.addChild(btnTemporada);
         stage.addChild(grupoSobre);
 
         // Iniciar secuencia
@@ -272,16 +315,14 @@
             alpha: 0,
             y: Math.floor(height/2) + 200
         }});
-        //var loginBtnAnim = c.pulse(loginBtn, 60, 0.5);        
-        //loginBtnAnim.play();
         t.makeInteractive(loginBtn);
         stage.addChild(loginBtn);
 
         loginBtn.over = function(){
-            //console.log("over");
+            loginBtn.tint = rojo;
         };
         loginBtn.out = function(){
-            //console.log("out");
+            loginBtn.tint = 0xFFFFFF;
         };
         loginBtn.tap = function(){
             loginBtn.enabled = false;
@@ -294,7 +335,7 @@
     }
 
     function loopLogin(){
-        TweenLite.to(loginBtn, 2, {pixi: { y: Math.floor(height/2) + 100, alpha: 1 }, delay: 2});
+        TweenLite.to(loginBtn, 2, {pixi: { y: Math.floor(height/2) + 100, alpha: 1 }, delay: 2});        
     }
 
     function outLogin(){
@@ -317,10 +358,10 @@
 
     var teorias = []; // Arreglo vacío para las teorías
 
-    var borroso = new PIXI.filters.BlurFilter();
-    var democracyText, fsocietyLogo;
+    var blurFilter, blurCount;
+    var democracyText, fsocietyLogo, iconScroll;
 
-    function createTeoria(id, x, y, w, h, title, thumb, url){
+    function createTeoria(id, x, y, w, h, title, thumb, url, postId){
 
         var teoriaSmall = new Container();
 
@@ -331,6 +372,7 @@
         teoriaThumb.width = w;
         teoriaThumb.height = h;
         teoriaThumb.link = url;
+        teoriaThumb.postId = postId;
         teoriaThumb.on('mouseup', openModal);
         teoriaThumb.on('touchend', openModal);
 
@@ -344,12 +386,14 @@
         teoriaTitleBg.endFill();
 
         var teoriaBorder = new PIXI.Graphics();
-        teoriaBorder.beginFill(negro);
+        teoriaBorder.beginFill(negro, 0.8);
         teoriaBorder.lineStyle(1, rojo);
+        teoriaBorder.drawRect(7, 7, w+2, h+2);
+        teoriaBorder.endFill();
+        teoriaBorder.beginFill(negro);
         teoriaBorder.drawRect(-1, -1, w+2, h+2);
         teoriaBorder.endFill();
 
-        //teoriaSmall.filters = [borroso];
         teoriaSmall.addChild(teoriaBorder);
         teoriaSmall.addChild(teoriaThumb);
         teoriaSmall.addChild(teoriaTitleBg);
@@ -380,6 +424,11 @@
         //console.log(this);
         //console.log(this.link);
 
+        // Para que anden los comentarios, hay que actualizar el ID del post
+        // en "assets/js/wpdiscuz.js" y "assets/js/wpdiscuz.min.js"
+        // hay que cambiar el scope de la variable "wpdiscuzPostId" a global.
+        wpdiscuzPostId = this.postId;
+
         $.magnificPopup.open({
             items: {
                 src: this.link,
@@ -389,7 +438,8 @@
             tError: 'File hacked.',
             alignTop: true,
             overflowY: 'scroll',
-            closeOnBgClick: false,
+            closeBtnInside: true,
+            closeOnBgClick: true,
             closeOnContentClick: false,
             removalDelay: 300,
             mainClass: 'mfp-fade',
@@ -413,18 +463,25 @@
             }
         }, 0);
         //teoriaThumb.enabled = false;
-    };
+    };    
 
     function initTeorias(){
 
         // Disminuir cantidad de cortes
         glitchFilters[1].randomModeOdds = 0.95;
 
+        iconScroll = new Sprite( resources[assetsFolder+"img/ui/scroll.png"].texture );
+        iconScroll.position.set( width-100, height/2-62);
+        iconScroll.alpha = 0.1;
+        grupoGlitch.addChild(iconScroll);
+
         // Leyenda de Fuck Society
+        blurFilter = new PIXI.filters.BlurFilter();
         //democracyText = new PIXI.Text('fuck society, our democracy has been hacked.',{ font : '24px Arial', fill : 0x333333, align : 'center'});
         democracyText = new PIXI.Text('TENER EL CONTROL ES UNA ILUSIÓN',{ font : '24px Arial', fill : 0x333333, align : 'center'});
         democracyText.position.set( width/2 -democracyText.width/2, height);
         democracyText.rotation = -0.05;
+        democracyText.filters = [blurFilter];
         c.slide(democracyText, democracyText.position.x, height-100, 120);
         grupoGlitch.addChild(democracyText);
 
@@ -434,7 +491,7 @@
         fsocietyLogo.anchor.set(0.5);
         fsocietyLogo.alpha = 0;
         c.fadeIn(fsocietyLogo, 600);
-        c.slide(fsocietyLogo, width/2, fsocietyLogo.position.y-10, 90, "smoothstep", true, 0);
+        //c.slide(fsocietyLogo, width/2, fsocietyLogo.position.y-10, 90, "smoothstep", true, 0);
         grupoGlitch.addChild(fsocietyLogo);
         
         // Si se cargó el JSON, cargar Teorias
@@ -448,8 +505,8 @@
                 //console.log(dbJSON.teorias[1].title);
 
                 // Crear teoría destacada
-                // createTeoria(id, x, y, w, h, title, thumb, url);
-                createTeoria(0, 50, 170, 480, 320, dbJSON.posts[0].title, dbJSON.posts[0].thumbnail_images.full.url, dbJSON.posts[0].url);
+                // createTeoria(id, x, y, w, h, title, thumb, url, postId);
+                createTeoria(0, 50, 170, width*0.45, width*0.45*320/480, dbJSON.posts[0].title, dbJSON.posts[0].thumbnail_images.full.url, dbJSON.posts[0].url, dbJSON.posts[0].id);
 
                 // Crear teorías
                 for(var i=1; i<dbJSON.posts.length; i++){
@@ -460,11 +517,13 @@
                     var titleTemp = dbJSON.posts[i].title;
                     var thumbTemp = dbJSON.posts[i].thumbnail_images.full.url;
                     var urlTemp = dbJSON.posts[i].url;
-                    console.log(titleTemp +" "+ thumbTemp +" "+ urlTemp);
+                    var postIdTemp = dbJSON.posts[i].id;
+                    //console.log(postIdTemp +" "+ thumbTemp +" "+ urlTemp);
 
-                    var xTemp = width/2 + Math.random()*(width/2-380-50);
-                    var yTemp = (250+30)*i;
-                    createTeoria(i, xTemp, yTemp, 380, 253, titleTemp, thumbTemp, urlTemp);
+                    var hTemp = width*0.3*320/480;
+                    var xTemp = width/2 + Math.random()*(width/2-width*0.3-50);
+                    var yTemp = (hTemp+30)*i;
+                    createTeoria(i, xTemp, yTemp, width*0.3, hTemp, titleTemp, thumbTemp, urlTemp, postIdTemp);
                 }
             
                 TweenLite.set(grupoTeorias, { pixi: { alpha: 0, y: height/2-200 }});
@@ -481,26 +540,59 @@
         }
     }
 
-
     function loopTeorias(){
 
         // Mover Leyenda
         if (Math.random() > 0.99) {
             democracyText.position.set( Math.random()*width - democracyText.width, Math.random()*height - democracyText.height);
         }
+
+        blurCount += 0.05;
+        var blurAmount = Math.cos(blurCount);
+        blurFilter.blur = 20 * (blurAmount);
+    }
+
+    function outTeorias(){
+        TweenLite.to(iconScroll, 1, {pixi: { alpha: 0 } });
+        TweenLite.to(democracyText, 1, {pixi: { alpha: 0 } });
+        TweenLite.to(fsocietyLogo, 1, {pixi: { alpha: 0 } });
+        TweenLite.to(grupoTeorias, 1, {pixi: { y: 300, alpha: 0 } });
+        TweenLite.to(teoriaDestacada, 1, {pixi: { y: -300, alpha: 0 }, onComplete: endTeorias });
+    }
+
+    function endTeorias(){
+        grupoTeorias.removeChildren();
+        teoriaDestacada.removeChildren();
+
+        grupoGlitch.removeChild(iconScroll);
+        grupoGlitch.removeChild(democracyText);
+        grupoGlitch.removeChild(fsocietyLogo);
+        grupoGlitch.removeChild(grupoTeorias);
+        grupoGlitch.removeChild(teoriaDestacada);
+
+        initLogin();
     }
 
 
     // Resize Canvas
     function resizeCanvas(width, height){
         // Global
-        logoSpace.position.x = width-logoSpace.width-30;            
+        logoSpace.position.x = width-logoSpace.width-30;
+        btnTemporada.position.x = width-logoSpace.width-btnTemporada.width-30*2;
+
+        // Redirect en pantallas chicas
+        if( width < tablet ){
+            console.log('Redirecing to the mobile version...');
+            window.location.replace('http://socialsnack.com');
+        }
 
         // State specific
         if( state === loopLogin ){
             grupoLogin.position.set(width/2, height/2);
             loginBtn.position.set( width/2, height/2 + 100 );
         } else if( state === loopTeorias ){
+            fsocietyLogo.position.set( width/2, height/2);
+            iconScroll.position.set( width-100, height/2-62);
         }
     }
 
@@ -519,7 +611,7 @@
         var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 
         if( state == loopTeorias ){
-            grupoTeorias.position.y = Math.max( (grupoTeorias.height*-1), Math.min( -160, grupoTeorias.position.y+(30 * delta) ));
+            grupoTeorias.position.y = Math.max( (grupoTeorias.height*-1), Math.min( -160, grupoTeorias.position.y+(20 * delta) ));
         }
 
         return false;
