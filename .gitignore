@@ -1,0 +1,53 @@
+<<<<<<< HEAD
+# .gitignore
+
+# Hidden folders
+.*/
+
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Sass
+.sass-cache/
+*.css.map
+
+# Ignore specific folders
+.tmp
+/assets
+/assets/*
+/refes
+/refes/*
+
+# Files and folders
+ins.php
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swn
+*.swo
+*.swp
+._*
+*~
+
+# packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+>>>>>>> 6efbc5f0318e2cbabd7f635eb58d86e9627d23e1

@@ -16,7 +16,7 @@ get_header(); ?>
 
     <div id="preload"><span></span></div>
     <div id="app"></div>
-    <footer id="audio"></footer>
+    <footer id="audio"><button id="toggleAudio" class="btnAudio on">Pause</button></footer>
     
     <div id="debug">
         <div id="stats"></div>

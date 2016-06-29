@@ -65,6 +65,17 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/img\/apple-touch-icon.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3161,
+		"inputAbbreviatedPath": "\/img\/apple-touch-icon.png",
+		"outputAbbreviatedPath": "\/img\/apple-touch-icon.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/avatar-default.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -76,6 +87,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/bg-v1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 93760,
+		"inputAbbreviatedPath": "\/img\/bg-v1.jpg",
+		"outputAbbreviatedPath": "\/img\/bg-v1.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/bg.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -83,6 +105,28 @@
 		"initialSize": 93760,
 		"inputAbbreviatedPath": "\/img\/bg.jpg",
 		"outputAbbreviatedPath": "\/img\/bg.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/facebook-share.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 163528,
+		"inputAbbreviatedPath": "\/img\/facebook-share.jpg",
+		"outputAbbreviatedPath": "\/img\/facebook-share.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/facebook-share2.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 203489,
+		"inputAbbreviatedPath": "\/img\/facebook-share2.jpg",
+		"outputAbbreviatedPath": "\/img\/facebook-share2.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -109,6 +153,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/login\/elliot-2.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 0,
+		"inputAbbreviatedPath": "\/img\/login\/elliot-2.png",
+		"outputAbbreviatedPath": "\/img\/login\/elliot-2.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/login\/elliot.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -124,7 +179,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 5921,
+		"initialSize": 3799,
 		"inputAbbreviatedPath": "\/img\/login\/fantheory.png",
 		"outputAbbreviatedPath": "\/img\/login\/fantheory.png",
 		"outputPathIsOutsideProject": 0,
@@ -160,6 +215,17 @@
 		"initialSize": 4254,
 		"inputAbbreviatedPath": "\/img\/logo-mrrobot-rojo.png",
 		"outputAbbreviatedPath": "\/img\/logo-mrrobot-rojo.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/logo-mrrobot-s02.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4254,
+		"inputAbbreviatedPath": "\/img\/logo-mrrobot-s02.png",
+		"outputAbbreviatedPath": "\/img\/logo-mrrobot-s02.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -252,6 +318,39 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/resumen-s01.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.82007e+06,
+		"inputAbbreviatedPath": "\/img\/resumen-s01.jpg",
+		"outputAbbreviatedPath": "\/img\/resumen-s01.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/teorias\/btn-join.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1892,
+		"inputAbbreviatedPath": "\/img\/teorias\/btn-join.png",
+		"outputAbbreviatedPath": "\/img\/teorias\/btn-join.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/teorias\/control.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2989,
+		"inputAbbreviatedPath": "\/img\/teorias\/control.png",
+		"outputAbbreviatedPath": "\/img\/teorias\/control.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/teorias\/fsociety.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -270,6 +369,28 @@
 		"initialSize": 78266,
 		"inputAbbreviatedPath": "\/img\/teorias\/fsociety.png",
 		"outputAbbreviatedPath": "\/img\/teorias\/fsociety.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/ui\/audio-off.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1482,
+		"inputAbbreviatedPath": "\/img\/ui\/audio-off.png",
+		"outputAbbreviatedPath": "\/img\/ui\/audio-off.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/ui\/audio-on.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1481,
+		"inputAbbreviatedPath": "\/img\/ui\/audio-on.png",
+		"outputAbbreviatedPath": "\/img\/ui\/audio-on.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -311,7 +432,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 2017,
+		"initialSize": 6705,
 		"inputAbbreviatedPath": "\/img\/ui\/btn-temporada1.png",
 		"outputAbbreviatedPath": "\/img\/ui\/btn-temporada1.png",
 		"outputPathIsOutsideProject": 0,
@@ -363,6 +484,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/index.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ins.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ins.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -697,6 +827,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/vendor\/howler.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/howler.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/min\/howler.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/vendor\/jquery.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -714,6 +855,28 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/vendor\/jquery.magnific-popup.min.js",
 		"outputAbbreviatedPath": "\/js\/vendor\/min\/jquery.magnific-popup.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/jquery.validate.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/jquery.validate.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/min\/jquery.validate.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/vendor\/messages_es_AR.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/vendor\/messages_es_AR.min.js",
+		"outputAbbreviatedPath": "\/js\/vendor\/min\/messages_es_AR.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -788,6 +951,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/page-mobile.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/page.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/page.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -885,6 +1057,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/template-parts\/content.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/template-parts\/header.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/template-parts\/header.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0

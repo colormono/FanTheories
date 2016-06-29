@@ -6,7 +6,7 @@ $rojo: #ed0532;
 $celeste: #00fefe;
 $verde: #00f80b;
 $blanco: #FFFFFF;
-$negro: #0e0e0e;
+$negro: #021114;
 $gris: #666666;
 
 $mobile: 480px;
@@ -116,7 +116,7 @@ body.app {
 }
 
 body.page {
-    background: #000 url(../img/bg.jpg) center center no-repeat fixed;
+    background: #000000 url(../img/bg.jpg) center center no-repeat fixed;
     background-size: cover;
 }
 
@@ -157,6 +157,32 @@ h4{
     }
 }
 
+.btnAudio{
+    display: block;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    text-indent: -100em;
+    border: none;
+    outline: none;
+
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &.on{
+        background-image: url(../img/ui/audio-on.png);
+    }
+    &.off{
+        background-image: url(../img/ui/audio-off.png);
+    }
+
+    &:focus{
+        outline: none;
+    }
+}
+
 /* PRELOADER */
 #preload{
     position: absolute;
@@ -167,6 +193,10 @@ h4{
     z-index: 10;
     text-align: center;
     width: 200px;
+}
+
+#audio{
+    display: hidden;
 }
 
 /* APP */
@@ -182,31 +212,36 @@ h4{
 
     hgroup{
         span{
-            display: inline-block;
-            padding-left: 15px;
             line-height: 1.4;
-        }
-    }
-
-    img{ 
-        max-height: 35px;
-    }
-
-    .space{
-        padding-bottom: 20px;
-    }
-
-    @media screen and (max-width: $mobile) {
-        hgroup{
-            span{
-                padding: 15px 0px 0px 0px;
-            }
         }
     }
 
     @media screen and (max-width: $tablet) {
         hgroup{
             padding-bottom: 20px;
+
+            span{
+                display: block;
+                padding: 15px 0px 0px 0px;
+            }
+        }
+        .space{
+            position: absolute;
+            top: 30px;
+            right: 20px;
+            width: 30px;
+            overflow: hidden;
+            height: 30px;
+
+            img{            
+                height: 29px;
+                max-width: 400px !important;
+            }
+        }
+        .temporada{
+            text-align: right;
+            display: block;
+            margin-top: -50px;
         }
     }
 
@@ -219,19 +254,26 @@ h4{
             a{
                 float: left;
             }
+            span{
+                display: inline-block;
+                padding-left: 15px;
+            }
         }
         aside{
             float: left;
             width: 40%;
             text-align: right;
-
-            .space{
-                float: right;
-                margin-bottom: 0px;
+        }
+        .space{
+            float: right;
+            margin-bottom: 0px;
+            padding-bottom: 20px;
+            img{ 
+                max-height: 35px;
             }
-            .temporada{
-                padding: 10px;
-            }
+        }
+        .temporada{
+            padding: 10px;
         }
 
     }
@@ -243,18 +285,21 @@ h4{
 
 .app .single{
     margin: 100px auto;
+    //max-width: 100%;
+    //margin: 100px 20px;
 }
 
 .single{
     max-width: 720px;
     margin: 0px auto;
+    position: relative;
 }
 
 .article{
 
     padding: 20px;
     background: #000;
-    background: rgba(0,0,0,0.9);
+    background-color: rgba(19, 33, 35, .9);
 
     p{
         font-size: 15px;
@@ -285,7 +330,7 @@ h4{
         }
 
         h1{
-            font-size: 20px;
+            font-size: 15px;
             display: inline-block;
             background-color: $negro;
             color: $blanco;
@@ -294,11 +339,18 @@ h4{
             box-shadow: 4px 4px 0px -1px $rojo;
             max-width: 75%;
             line-height: 1.3;
+
+            @media screen and (min-width: $tablet) {
+                font-size: 20px;
+            }
         }
     }
 
     figure{
         border: 1px solid $rojo;
+        margin-top: -20px;
+    }
+    &.article-single figure{
         margin-top: 20px;
     
         @media screen and (min-width: $tablet) {
@@ -307,7 +359,6 @@ h4{
             margin: 20px 20px 20px -200px;
         }
     }
-
 
     .body{
         padding: 20px 20px 20px 0px;
@@ -437,13 +488,67 @@ h4{
     .wc-field-submit input[type="button"]{
         @extend .btn;
     }
+    @media screen and (max-width: $mobile) {
+        .wc-field-submit input[type="button"]{
+            width: 100%;
+            max-width: 100%;
+            padding: 25px;
+        }
+    }
+}
+
+/* FORM */
+.page .mfp-hide{
+    display: block !important;
+}
+
+#register-form{
+    text-align: center;
+    padding: 30px 10px;
+
+    span.error{
+        display: block;
+        font-style: italic;
+        color: $rojo;
+        margin-bottom: 20px;
+        margin-top: -5px;
+    }
+}
+
+label{
+    display: block;
+    margin-bottom: 5px;
+}
+input{
+    font-family: 'Hack','Monaco', monospace, courier;
+    border: 1px solid $negro;
+    background: #000;
+    box-shadow: none;
+    font-size: 13px;
+    width: 300px;
+    color: #FFF;
+    padding: 6px;
+    border: none;
+    margin-bottom: 10px;
+
+    &:focus{
+        outline: none;
+    }
+}
+@media screen and (max-width: $mobile) {
+    input[type="button"]{
+        width: 100%;
+        max-width: 100%;
+        padding: 25px;
+    }
 }
 
 /* FOOTER */
 
 #footer{
     text-align: center;
-    margin-bottom: 100px;
+    //margin-bottom: 100px;
+    padding: 40px;
 }
 
 #audio{
@@ -476,11 +581,25 @@ h4{
 
 .mfp-bg {
     background-color: #000;
+    background-color: rgba(19, 33, 35, .9);
     position: relative;
     z-index: 100;
 }
+.mfp-preloader {
+    padding: 20px;
+    background-color: transparent;
+    //background-color: rgba(19, 33, 35, .9);
+    background-image: url(../img/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 200px;
+    margin: 0px auto;
+    overflow: hidden;
+    text-indent: -100em;
+}
+
 .mfp-fade.mfp-bg {
-    top: 100px;
+    top: 200px;
   opacity: 0;
   transition: all 0.5s ease-out;
 }
@@ -496,7 +615,7 @@ h4{
 
 .mfp-fade.mfp-wrap .mfp-content {
   opacity: 0;
-  top: 100px;
+  top: 200px;
   transition: all 0.5s ease-out;
   width: 100%;
   height: 100%;
@@ -509,14 +628,14 @@ h4{
 
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
   opacity: 0;
-  top: 100px;
+  top: 200px;
 }
 
 .mfp-close-btn-in .mfp-close{
     color: $rojo;
     font-size: 70px;
-    top: 100px;
-    right: 80px;
+    top: 10px;
+    right: 10px;
     opacity: 1;
 }
 

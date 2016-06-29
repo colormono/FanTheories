@@ -21,8 +21,11 @@
 -->
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
+<link rel="icon" href="<?php bloginfo('template_url'); ?>/img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="<?php bloginfo('template_url'); ?>/img/apple-touch-icon.png">
+<link rel="apple-touch-icon-precomposed" href="<?php bloginfo('template_url'); ?>/img/apple-touch-icon.png">
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/magnific-popup.css">
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/main.css">
 
